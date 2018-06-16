@@ -45,7 +45,7 @@ int		findgrid(f_line *node, int fd)
 	int		i;
 
 	i = 0;
-	// line = NULL;
+	line = NULL;
 	if(node->gridsizey == 0 || node->gridsizex == 0)
 		findsize(line,node, fd);
 	get_next_line(fd, &line);
