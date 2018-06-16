@@ -42,10 +42,10 @@ void	catintonode(char *line, f_line *node)
 int		findgrid(f_line *node, int fd)
 {
 	char	*line;
-	char	**splitline;
-	int i;
+	int		i;
 
 	i = 0;
+	// line = NULL;
 	if(node->gridsizey == 0 || node->gridsizex == 0)
 		findsize(line,node, fd);
 	get_next_line(fd, &line);

@@ -6,8 +6,8 @@ int	main()
 	f_line *node;
 	int fd;
 
-	// fd = open("output.txt", O_RDONLY);
-	fd = 0;
+	fd = open("output.txt", O_RDONLY);
+	// fd = 0;
 
 	node = (f_line*)malloc(sizeof(f_line));
 	if(!node)
