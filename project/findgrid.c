@@ -36,7 +36,7 @@ void	catintonode(char *line, f_line *node)
 		splitline = ft_split(line, ' ');
 		ft_strcat(node->grid, splitline[1]);
 		ft_strcat(node->grid, "|");
-		free(splitline);
+		//`free(splitline);
 }
 
 int		findgrid(f_line *node, int fd)
@@ -58,5 +58,6 @@ int		findgrid(f_line *node, int fd)
 		i++;
 	}
 	catintonode(line, node);
+    write(1, "XD\n", 3);
 	return (1);
 }

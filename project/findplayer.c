@@ -15,15 +15,16 @@
 char	*findplayer(f_line *node, int fd)
 {
 	char	*line;
-	int 	i;
+ 	//int 	i;
 
-	i = 0;
-	// while (i < 6)
+    // i = 0;
+	 //while (i < 6)
 	// {
-	// 	skipline(fd);
+	 //	skipline(fd);
 	// 	i++;
 	// }
-	while(strstr(line, "exec"))
+    get_next_line(fd, &line); 
+	while(strstr(line, "exec")== NULL)
 		get_next_line(fd, &line);
 	if (ft_strstr(line, BOT_NAME))
 		node->player = 1;
