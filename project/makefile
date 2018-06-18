@@ -6,6 +6,8 @@ SRC = findgrid.c \
 	findtoken.c \
 	ft_split.c \
 	skipline.c \
+	updategrid.c \
+	heatmap.c \
 	main.c \
 
 

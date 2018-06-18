@@ -11,35 +11,46 @@
 /* ************************************************************************** */
 
 #include "filler.h"
+int		intotoken(m_line *node, char *line, int l)
+{
+	node->token->mdhold[l] = (char*)ft_memalloc(sizeof(char)*node->token->sizex);
+	ft_strcat(node->token->mdhold[l], line);
 
-int		findtoken(f_line *node, int fd)
+	return (1);
+}
+
+int		findtoken(m_line *node, int fd)
 {
 	char	*line;
 	char	**splitline;
-	int		x;
-	int		y;
 	int		i;
 
-	if (node->token)
-		ft_strclr(node->token);
 	get_next_line(fd, &line);
-    write(1 , "X\n" , 2);
 	while(ft_strstr(line, "Piece") == NULL)
+		get_next_line(fd, &line);
+	splitline = ft_split(line, ' ');
+	node->token->sizey = ft_atoi(splitline[1]);
+	node->token->sizex = ft_atoi(splitline[2]);
+	if (node->token->hold)
+		free(node->token->hold);
+
+	node->token->hold = (char*)ft_memalloc(sizeof(char) *					//oldway
+		(node->token->sizex * node->token->sizey + node->token->sizey));
+
+	node->token->mdhold = (char**)ft_memalloc(sizeof(char) *
+		(node->token->sizex * node->token->sizey));
+
+	i = 0;
+	printf("%d and %d \n", node->token->sizey, node->token->sizex);
+	while (i < node->token->sizey )
 	{
 		get_next_line(fd, &line);
-			printf("%s\n",line );
-	}
-	splitline = ft_split(line, ' ');
-	y = ft_atoi(splitline[1]);
-	x = ft_atoi(splitline[2]);
-	node->token = (char*)ft_memalloc(sizeof(char) * (x * y));
-    i = 0;
-	while (i < y)
-	{
-        get_next_line(fd, &line);
-		ft_strcat(node->token, line);
-		ft_strcat(node->token, "|");
-        i++;
+		
+		ft_strcat(node->token->hold, line);
+		ft_strcat(node->token->hold, "|");
+
+		intotoken(node, line, i);
+		i++;
 	}
 	return (1);
 }

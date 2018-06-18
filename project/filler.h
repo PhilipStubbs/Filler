@@ -16,22 +16,32 @@
 # include "libft/libft.h"
 #include <stdio.h>
 
-typedef	struct		i_line
+typedef	struct		u_line
 {
-	int				player;
-	char			*grid;
-	char			*token;
-	int				gridsizex;
-	int				gridsizey;
+	char			*hold;
+	char			**mdhold;
+	int				sizex;
+	int				sizey;
 	int				x;
 	int				y;
 
-}					f_line;
+}					g_line;
+
+typedef	struct		i_line
+{
+	int				player;
+	char			piece;
+	char			**heatmap;
+	g_line			*token;
+	g_line			*grid;
+
+}					m_line;
 
 int					skipline(int fd);
-char				*findplayer(f_line *node, int fd);
-int					findgrid(f_line *node, int fd);
+char				*findplayer(m_line *node, int fd);
+int					findgrid(m_line *node, int fd);
 char				**ft_split(char *str, char c);
-int					findtoken(f_line *node, int fd);
+int					findtoken(m_line *node, int fd);
+int					updategrid(m_line *node, int fd);
 
 #endif
