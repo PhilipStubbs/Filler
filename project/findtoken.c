@@ -41,7 +41,6 @@ int		findtoken(m_line *node, int fd)
 		(node->token->sizex * node->token->sizey));
 
 	i = 0;
-	printf("%d and %d \n", node->token->sizey, node->token->sizex);
 	while (i < node->token->sizey )
 	{
 		get_next_line(fd, &line);

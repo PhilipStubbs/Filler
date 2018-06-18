@@ -7,7 +7,8 @@ m_line	*malloctime(m_line *node)
 	node->grid = (g_line*)malloc(sizeof(g_line));
 	node->token = (g_line*)malloc(sizeof(g_line));
 	node->token->hold = (char*)malloc(sizeof(char));
-	node->heatmap = (char**)ft_memalloc(sizeof(char) * (node->grid->sizey * node->grid->sizex));
+	node->heatmap = (char**)ft_memalloc(sizeof(node->heatmap) * (node->grid->sizey * node->grid->sizex));
+	// node->heatmap = NULL;
 	node->grid->sizex = 0;
 	node->grid->sizey = 0;
 
@@ -29,20 +30,23 @@ int	main()
 	m_line *node;
 	int fd;
 
-	// fd = open("output.txt", O_RDONLY);
-	fd = 0;
+	fd = open("output.txt", O_RDONLY);
+	// fd = 0;
 	node = NULL;
 	node = malloctime(node);
 	findplayer(node, fd);
 	findgrid(node, fd);
-
+ 	// printnode(node->grid->mdhold);
 	findtoken(node, fd);
-	
+	// printnode(node->token->mdhold);
 
-	// ft_putendl_fd("3 3", 1);
+	heatmap(node);
+	printnode(node->heatmap);
+	// ft_putendl_fd("29 30", 1);
 
 	// updategrid(node, fd);
-
+	// printnode(node->grid->mdhold);
+	// findtoken(node, fd);
 	ft_putchar_fd('[', 2) ;
 
 	// findtoken(node, fd);

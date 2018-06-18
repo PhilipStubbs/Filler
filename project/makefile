@@ -16,10 +16,9 @@ OBJ = *.o
 all: $(NAME)
 
 $(NAME):
-	#gcc -c -Wall -Werror -Wextra $(SRC) -I. -L. libft.a
-	#gcc $(OBJ) -I./libft -o $(NAME)
 	gcc -c -Wall -Werror -Wextra $(SRC)
 	gcc -o $(NAME) $(OBJ) -I. -L. libft.a
+	rm -f $(OBJ)
 
 clean:
 	rm -f $(OBJ)
