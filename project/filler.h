@@ -43,6 +43,6 @@ int					findgrid(m_line *node, int fd);
 char				**ft_split(char *str, char c);
 int					findtoken(m_line *node, int fd);
 int					updategrid(m_line *node, int fd);
-int					heatmap(m_line *node);
+int					heatmap(m_line *node, int value);
 
 #endif

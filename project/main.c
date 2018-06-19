@@ -40,7 +40,7 @@ int	main()
 	findtoken(node, fd);
 	// printnode(node->token->mdhold);
 
-	heatmap(node);
+	heatmap(node, 5);
 	printnode(node->heatmap);
 	// ft_putendl_fd("29 30", 1);
 

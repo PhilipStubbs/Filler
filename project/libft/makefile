@@ -20,6 +20,7 @@ $(NAME):
 	gcc -c -Wall -Werror -Wextra $(SRC) -I. -c
 	ar -rc $(NAME) $(OBJ)
 	ranlib $(NAME)
+	rm -f $(OBJ)
 
 clean:
 	rm -f $(OBJ)
