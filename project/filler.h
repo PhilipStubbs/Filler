@@ -30,8 +30,8 @@ typedef	struct		u_line
 typedef	struct		i_line
 {
 	int				player;
+	int				**heatmap;
 	char			piece;
-	char			**heatmap;
 	g_line			*token;
 	g_line			*grid;
 
@@ -43,6 +43,6 @@ int					findgrid(m_line *node, int fd);
 char				**ft_split(char *str, char c);
 int					findtoken(m_line *node, int fd);
 int					updategrid(m_line *node, int fd);
-int					heatmap(m_line *node, int value);
+int					swallow(m_line *node);
 
 #endif

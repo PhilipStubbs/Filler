@@ -51,5 +51,6 @@ int		findtoken(m_line *node, int fd)
 		intotoken(node, line, i);
 		i++;
 	}
+	node->token->mdhold[i] = NULL;
 	return (1);
 }

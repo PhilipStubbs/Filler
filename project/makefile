@@ -7,7 +7,7 @@ SRC = findgrid.c \
 	ft_split.c \
 	skipline.c \
 	updategrid.c \
-	heatmap.c \
+	swallow.c \
 	main.c \
 
 

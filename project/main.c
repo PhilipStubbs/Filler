@@ -7,7 +7,6 @@ m_line	*malloctime(m_line *node)
 	node->grid = (g_line*)malloc(sizeof(g_line));
 	node->token = (g_line*)malloc(sizeof(g_line));
 	node->token->hold = (char*)malloc(sizeof(char));
-	node->heatmap = (char**)ft_memalloc(sizeof(node->heatmap) * (node->grid->sizey * node->grid->sizex));
 	// node->heatmap = NULL;
 	node->grid->sizex = 0;
 	node->grid->sizey = 0;
@@ -25,6 +24,26 @@ void	printnode(char **str)
 		ft_putendl_fd(str[i++], 2);
 }
 
+void	printnodenbr(m_line *node)
+{
+	int i;
+	int	l;
+
+	i = 0;
+	l = 0;
+	while(l < node->grid->sizey)
+	{
+		i = 0;
+		while(i < node->grid->sizex)
+		{
+			ft_putnbr_fd(node->heatmap[l][i++], 1);
+			ft_putchar_fd('|',2);
+		}
+		ft_putchar_fd('\n', 2);
+		l++;
+	}
+}
+
 int	main()
 {
 	m_line *node;
@@ -38,10 +57,10 @@ int	main()
 	findgrid(node, fd);
  	// printnode(node->grid->mdhold);
 	findtoken(node, fd);
-	// printnode(node->token->mdhold);
+	printnode(node->token->mdhold);
 
-	heatmap(node, 5);
-	printnode(node->heatmap);
+	swallow(node);
+	printnodenbr(node);
 	// ft_putendl_fd("29 30", 1);
 
 	// updategrid(node, fd);
