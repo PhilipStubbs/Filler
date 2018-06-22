@@ -19,7 +19,7 @@ char	*findplayer(m_line *node, int fd)
     get_next_line(fd, &line); 
 	while(strstr(line, "exec") == NULL)
 		get_next_line(fd, &line);
-	if (ft_strstr(line, BOT_NAME))
+	if (ft_strstr(line, "p1"))
 	{
 		node->player = 1;
 		node->piece = 'o';
