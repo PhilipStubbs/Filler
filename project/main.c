@@ -39,8 +39,6 @@ void	printnodenbr(m_line *node)
 		while(i < node->grid->sizex)
 		{
 			ft_putnbr_fd(node->heatmap[l][i], 2);
-			// printf("%d",node->heatmap[l][i] );
-			// ft_putchar_fd('|',2);
 			i++;
 		}
 		ft_putchar_fd('\n', 2);
@@ -49,18 +47,15 @@ void	printnodenbr(m_line *node)
 }
 	
 
-
-
 int	main()
 {
 	m_line *node;
 	int fd;
 
-	fd = open("output02.txt", O_RDONLY);
+	fd = open("output01.txt", O_RDONLY);
 	// fd = 0;
 	node = NULL;
 	node = malloctime(node);
-	write(1, "FP\n",3);
 	findplayer(node, fd);
 	findgrid(node, fd);
  	// printnode(node->grid->mdhold);

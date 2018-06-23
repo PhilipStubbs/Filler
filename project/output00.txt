@@ -4,7 +4,7 @@
 #                                              #$
 # -------------------------------------------- #$
 launched ./players/champely.filler$
-$$$ exec p1 : [./players/philler.filler]$
+$$$ exec p2 : [./players/philler.filler]$
 launched ./players/champely.filler$
 $$$ exec p2 : [./players/champely.filler]$
 Plateau 15 17:

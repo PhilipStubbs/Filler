@@ -4,9 +4,9 @@
 #                                              #$
 # -------------------------------------------- #$
 launched ./players/champely.filler$
-$$$ exec p1 : [./players/philler.filler]$
+$$$ exec p1 : [./players/ch.filler]$
 launched ./players/champely.filler$
-$$$ exec p2 : [./players/champely.filler]$
+$$$ exec p2 : [./players/philler.filler]$
 Plateau 100 99:
     012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678
 000 ...................................................................................................

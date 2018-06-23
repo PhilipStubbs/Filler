@@ -9,6 +9,11 @@ SRC = findgrid.c \
 	updategrid.c \
 	swallow.c \
 	findstart.c \
+	linetoenem.c \
+	lineplayerone.c \
+	lineplayertwo.c \
+	playeroneforking.c \
+	playertwoforking.c \
 	main.c \
 
 
