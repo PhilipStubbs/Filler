@@ -31,18 +31,22 @@ typedef	struct		i_line
 {
 	int				player;
 	int				**heatmap;
+	int				heatmapcreat;
 	char			piece;
+	char			enem;
 	g_line			*token;
 	g_line			*grid;
 
 }					m_line;
 
-int					skipline(int fd);
 char				*findplayer(m_line *node, int fd);
+char				*findstart(m_line *node, char c);
+int					updategrid(m_line *node, int fd);
+int					findtoken(m_line *node, int fd);
 int					findgrid(m_line *node, int fd);
 char				**ft_split(char *str, char c);
-int					findtoken(m_line *node, int fd);
-int					updategrid(m_line *node, int fd);
 int					swallow(m_line *node);
+int					skipline(int fd);
+
 
 #endif

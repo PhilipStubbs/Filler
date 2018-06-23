@@ -7,6 +7,8 @@ m_line	*malloctime(m_line *node)
 	node->grid = (g_line*)malloc(sizeof(g_line));
 	node->token = (g_line*)malloc(sizeof(g_line));
 	node->token->hold = (char*)malloc(sizeof(char));
+	node->heatmapcreat = 0;
+	// node->heatmap = (int**)malloc(sizeof(node->heatmap));
 	// node->heatmap = NULL;
 	node->grid->sizex = 0;
 	node->grid->sizey = 0;
@@ -36,20 +38,25 @@ void	printnodenbr(m_line *node)
 		i = 0;
 		while(i < node->grid->sizex)
 		{
-			ft_putnbr_fd(node->heatmap[l][i++], 2);
+			ft_putnbr_fd(node->heatmap[l][i], 2);
+			// printf("%d",node->heatmap[l][i] );
 			// ft_putchar_fd('|',2);
+			i++;
 		}
 		ft_putchar_fd('\n', 2);
 		l++;
 	}
 }
+	
+
+
 
 int	main()
 {
 	m_line *node;
 	int fd;
 
-	fd = open("output01.txt", O_RDONLY);
+	fd = open("output02.txt", O_RDONLY);
 	// fd = 0;
 	node = NULL;
 	node = malloctime(node);
@@ -59,7 +66,6 @@ int	main()
  	// printnode(node->grid->mdhold);
 	findtoken(node, fd);
 	printnode(node->token->mdhold);
-
 
 	swallow(node);
 	printnodenbr(node);

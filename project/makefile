@@ -8,6 +8,7 @@ SRC = findgrid.c \
 	skipline.c \
 	updategrid.c \
 	swallow.c \
+	findstart.c \
 	main.c \
 
 

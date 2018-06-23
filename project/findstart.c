@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   findplayer.c                                       :+:      :+:    :+:   */
+/*   findstarts.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 12:31:56 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/06/15 12:31:57 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/06/23 12:02:42 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/06/23 12:02:44 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-char	*findplayer(m_line *node, int fd)
+char	*findstart(m_line *node, char c)
 {
-	char	*line;
+	int		x;
+	int		y;
+	char	*ret;
 
-    get_next_line(fd, &line); 
-	while(strstr(line, "exec") == NULL)
-		get_next_line(fd, &line);
-	if (ft_strstr(line, "p1"))
+	x = 0;
+	while (x < node->grid->sizex)
 	{
-		node->player = 1;
-		node->piece = 'o';
-		node->enem = 'x';
+		y = 0;
+		while (y < node->grid->sizey)
+		{
+			if(node->grid->mdhold[y][x] == c || node->grid->mdhold[y][x] == c - 32)
+			{
+				x++;
+				ret = ft_strjoin(ft_itoa(x++), " ");
+				y++;
+				ft_strcat(ret, ft_itoa(y++));
+				printf("findstart : [%d][%d]\n",y, x );
+				return(ret) ;
+			}
+			y++;
+		}
+		x++;
 	}
-	else
-	{
-		node->player = 2;
-		node->piece = 'x';
-		node->enem = 'o';
-	}
-
-	return (BOT_NAME);
+	return (NULL);	
 }

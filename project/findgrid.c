@@ -12,6 +12,20 @@
 
 #include "filler.h"
 
+void	bigmap (m_line *node)
+{
+	if (node->player == 1)
+	{
+		node->piece = 'x';
+		node->enem = 'o';
+	}
+	else if (node->player == 2)
+	{
+		node->piece = 'o';
+		node->enem = 'x';
+	}
+}
+
 int		findsize(char *line, m_line *node, int fd)
 {
 	char	**splitline;
@@ -27,6 +41,8 @@ int		findsize(char *line, m_line *node, int fd)
 	node->grid->mdhold =(char**)ft_memalloc(sizeof(char) * (node->grid->sizey * node->grid->sizex));
 	if (!node->grid->mdhold)
 		return (-1);
+	if (node->grid->sizey == 100)
+		bigmap(node);
 	return (1);
 }
 
@@ -44,6 +60,7 @@ void	catintonode(char *line, m_line *node, int i)
 		ft_strcat(node->grid->mdhold[i], splitline[1]);
 }
 
+
 int		findgrid(m_line *node, int fd)
 {
 	char	*line;
@@ -51,6 +68,7 @@ int		findgrid(m_line *node, int fd)
 
 	i = 0;
 	line = NULL;
+
 	if(node->grid->sizey == 0 || node->grid->sizex == 0)
 		findsize(line,node, fd);
 	get_next_line(fd, &line);

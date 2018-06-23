@@ -32,12 +32,13 @@ void	resetgrid(m_line *node)
 	}
 }
 
-int		setplayerpieces(m_line *node, char c,int repval)
+int		setplayerpieces(m_line *node, char c, int repval)
 {
 	int		i;
 	int		l;
 
 	l = 0;
+	i = 0;
 	while(l < node->grid->sizey)
 	{
 		i = 0;
@@ -67,36 +68,8 @@ int		findwho(m_line *node)
 	else if (node->piece == 'x')
 		c = 'o';
 	repval = 0;
-
 	setplayerpieces(node, c ,repval);
 	return (1);
-}
-
-char	*findstart(m_line *node)
-{
-	int		x;
-	int		y;
-	char	*ret;
-
-	x = 0;
-	while (x < node->grid->sizex )
-	{
-		y = 0;
-		while (y < node->grid->sizey)
-		{
-			if(node->grid->mdhold[y][x] == node->piece || node->grid->mdhold[y][x] == node->piece -32)
-			{
-				x++;
-				ret = ft_strjoin(ft_itoa(x++), " ");
-				y++;
-				ft_strcat(ret, ft_itoa(y++));
-				return(ret) ;
-			}
-			y++;
-		}
-		x++;
-	}
-	return (NULL);	
 }
 
 int		forkout(m_line *node, int cx, int cy)
@@ -108,18 +81,38 @@ int		forkout(m_line *node, int cx, int cy)
 	count = 0;
 	x = cx;
 	y = cy - 1;
-	while (count < node->grid->sizex / 3)
+	while (count < node->grid->sizex )
 	{
 		node->heatmap[cy][x++] = 5;
 		node->heatmap[cy - 1][x] = 4;
+		if (x == node->grid->sizex)
+			break ;
 		count++;
 	}
 	count = 0;
 	cx -= 1;
-	while (count < node->grid->sizey / 3)
+	if (node->grid->sizey == 100)
+	{
+		while (count < node->grid->sizey)
+		{
+			node->heatmap[y][cx] = 5;
+			cx--;
+			node->heatmap[y][cx] = 4;
+			cx--;
+			node->heatmap[y][cx] = 4;
+			y++;
+			if (cx == 0 || y == node->grid->sizey)
+				return (1);
+			count++;
+		}
+		return (1);
+	}
+	while (count < node->grid->sizey)
 	{
 		node->heatmap[y++][cx] = 5;
 		node->heatmap[y][cx -1] = 4;
+		if (y == node->grid->sizey)
+			break ;
 		count++;
 	}
 	return (1);
@@ -127,28 +120,75 @@ int		forkout(m_line *node, int cx, int cy)
 
 int		forker(m_line *node)
 {
-	int		x;
-	int		y;
+	int		myx;
+	int		myy;
 	int		count;
-	char	**xy;
+	char	**myxy;
+	char	**txy;
 
 	count = 0;
-	xy = ft_split(findstart(node), ' ');
-	x = ft_atoi(xy[0]);
-	y = ft_atoi(xy[1]);
-	while(count++ <= node->grid->sizey/4)
+	write(1 , "before split\n",13);
+	myxy = ft_split(findstart(node, node->piece), ' ');
+	txy = ft_split(findstart(node, node->enem), ' ');
+	myx = ft_atoi(myxy[0]);
+	myy = ft_atoi(myxy[1]);
+	write(1 , "before line\n",12);
+
+	if (node->grid->sizey == 15)
 	{
-		if (node->heatmap[y][x] != 2)
-			node->heatmap[y][x] = 5;
-		x++;
-		if (node->heatmap[y][x] != 2)
-			node->heatmap[y][x] = 4;
-		if (node->heatmap[y][x-2] != 2)
-			node->heatmap[y][x-2] = 4;
-		y++;
-		x++;
+		while(count++ <= atoi(txy[1]) / 10)
+		{
+			if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
+				node->heatmap[myy][myx] = 5;
+			myx++;
+			myx++;
+			myx++;
+			if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
+				node->heatmap[myy][myx] = 5;
+			if (node->heatmap[myy][myx-2] != 2)
+				node->heatmap[myy][myx-2] = 5;
+			myy++;
+			if (myx == node->grid->sizex || myy == node->grid->sizey )
+				break ;
+		}
 	}
-	forkout(node, x, y);
+
+
+	else if (node->grid->sizey == 24)
+	{
+		while(count++ <= atoi(txy[1]) / 2)
+		{
+			if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
+				node->heatmap[myy][myx] = 5;
+			myx++;
+			if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
+				node->heatmap[myy][myx] = 4;
+			if (node->heatmap[myy][myx-2] != 2)
+				node->heatmap[myy][myx-2] = 4;
+			myy++;
+			myx++;
+			if (myx == node->grid->sizex || myy == node->grid->sizey )
+				break ;
+		}
+	}
+	else if (node->grid->sizey == 100)
+	{
+		while(count++ <= atoi(txy[1]) / 3)
+		{
+			if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
+				node->heatmap[myy][myx] = 5;
+			myx++;
+			if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
+				node->heatmap[myy][myx] = 4;
+			if (node->heatmap[myy][myx-2] != 2)
+				node->heatmap[myy][myx-2] = 4;
+			myy++;
+			if (myx == node->grid->sizex || myy == node->grid->sizey )
+				break ;
+		}
+	}
+	forkout(node, myx, myy);
+	return (1);
 }
 
 
@@ -165,14 +205,16 @@ void	createmem(m_line *node)
 	int l;
 
 	l = 0;
-	node->heatmap = (int**)ft_memalloc(sizeof(*node->heatmap) * node->grid->sizey +1);
-	while(l < node->grid->sizey)
+	node->heatmap = (int**)malloc(sizeof(int) * (node->grid->sizey * node->grid->sizex));
+	while(l <= node->grid->sizey)
 	{
-		node->heatmap[l] = (int*)ft_memalloc(sizeof(int)* node->grid->sizex);
+		node->heatmap[l] = (int*)malloc(sizeof(int)* node->grid->sizex +1);
 		l++;
 	}
 	resetgrid(node);
+	write(1, "resetgrid\n", 10);
 	findwho(node);
+	write(1, "findwho\n", 8);
 	forkmapcreate(node);
 }
 
@@ -181,7 +223,7 @@ int	loopnegx(m_line *node, int x, int y)
 {
 	int	count;
 
-	count = 7;
+	count = 5;
 
 	while (node->heatmap[y][x] == 1 && count > 2 && !(node->heatmap[y][x] >= 2 && node->heatmap[y][x] <= 5)&& y < node->grid->sizey && x < node->grid->sizex)
 	{
@@ -197,7 +239,7 @@ int	loopposx(m_line *node, int x, int y)
 {
 	int	count;
 
-	count = 7;
+	count = 5;
 
 	while (node->heatmap[y][x] == 1 && count > 2 && !(node->heatmap[y][x] >= 2 && node->heatmap[y][x] <= 5)&& y < node->grid->sizey && x < node->grid->sizex)
 	{
@@ -213,7 +255,7 @@ int	loopnegy(m_line *node, int x, int y)
 {
 	int	count;
 
-	count = 7;
+	count = 5;
 
 	while (node->heatmap[y][x] == 1 && count > 2 && !(node->heatmap[y][x] >= 2 && node->heatmap[y][x] <= 5)&& y < node->grid->sizey && x < node->grid->sizex)
 	{
@@ -228,7 +270,7 @@ int	loopposy(m_line *node, int x, int y)
 {
 	int	count;
 
-	count = 7;
+	count = 5;
 
 	while (node->heatmap[y][x] == 1 && count > 2 && !(node->heatmap[y][x] >= 2 && node->heatmap[y][x] <= 5))
 	{	
@@ -263,44 +305,7 @@ int	searchandreplace(m_line *node, int s, int r)
 				loopnegx(node, i-1, l);
 				loopposx(node, i+1, l);
 				loopnegy(node, i, l-1);
-				// loopposy(node, i, l+1);
-				// while (node->heatmap[templ][tempi] == 1 && count > 2 && !(node->heatmap[templ][tempi] >= 2 && node->heatmap[templ][tempi] <= 5)&& templ < node->grid->sizey && tempi < node->grid->sizex)
-				// {
-				// 	printf("[%d][%d]\n",templ,tempi );
-				// 	node->heatmap[templ][tempi] = count;
-				// 	tempi--;
-				// 	count--;
-				// }
-
-				// tempi = i+1;
-				// count = 7;
-				// while (node->heatmap[templ][tempi] == 1 && count > 2 && !(node->heatmap[templ][tempi] >= 2 && node->heatmap[templ][tempi] <= 5)&& templ < node->grid->sizey && tempi < node->grid->sizex)
-				// {
-				// 	printf("[%d][%d]\n",templ,tempi );
-				// 	node->heatmap[templ][tempi] = count;
-				// 	tempi++;
-				// 	count--;
-				// }
-				// tempi = i;
-				// templ = l+1;
-				// count = 5;
-				// while (node->heatmap[templ][tempi] == 1 && count > 2 && !(node->heatmap[templ][tempi] >= 2 && node->heatmap[templ][tempi] <= 5) && templ < node->grid->sizey && tempi < node->grid->sizex)
-				// {
-				// 	printf("[%d][%d]\n",templ,tempi );
-				// 	node->heatmap[templ][tempi] = count;
-				// 	templ++;
-				// 	count--;
-				// }
-				// tempi = i;
-				// templ = l-1;
-				// count = 7;
-				// while (node->heatmap[templ][tempi] == 1 && count > 2 && !(node->heatmap[templ][tempi] >= 2 && node->heatmap[templ][tempi] <= 5)&& templ < node->grid->sizey && tempi < node->grid->sizex)
-				// {
-				// 	printf("[%d][%d]\n",templ,tempi );
-				// 	node->heatmap[templ][tempi] = count;
-				// 	templ--;
-				// 	count--;
-				// }
+				loopposy(node, i, l+1);
 			}
 
 			i++;
@@ -322,17 +327,18 @@ int	chokenemy(m_line *node, char enem)
 int	swallow(m_line *node)
 {
 	char enem;
-
-	if (!node->heatmap)
+	if (node->heatmapcreat == 0)
 	{
 		createmem(node);
+		node->heatmapcreat = 1;
 	}
 	if (node->piece == 'o')
 		enem = 'x';
 	else if (node->piece == 'x')
 		enem = 'o';
 
-	findwho(node);
+	// findwho(node);
+	// write(1, "afterfindwho\n",13);
 	chokenemy(node, enem);
 	
 
