@@ -28,7 +28,6 @@ char	*findstart(m_line *node, char c)
 			{
 				ret = ft_strjoin(ft_itoa(x++), " ");
 				ft_strcat(ret, ft_itoa(y++));
-				printf("findstart : [%d][%d]\n",y, x );
 				return(ret) ;
 			}
 			y++;

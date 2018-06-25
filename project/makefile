@@ -12,9 +12,11 @@ SRC = findgrid.c \
 	linetoenem.c \
 	lineplayerone.c \
 	lineplayertwo.c \
-	playeroneforking.c \
-	playertwoforking.c \
+	forkingplayerone.c \
+	forkingplayertwo.c \
 	validpos.c \
+	enemparm.c \
+	tokenplacement.c \
 	main.c \
 
 
