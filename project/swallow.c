@@ -137,10 +137,6 @@ int	swallow(m_line *node)
 		createmem(node);
 		node->heatmapcreat = 1;
 	}
-	// if (node->piece == 'o')
-	// 	enem = 'x';
-	// else if (node->piece == 'x')
-	// 	enem = 'o';
 
 	findwho(node);
 	// write(1, "afterfindwho\n",13);

@@ -13,7 +13,7 @@ static int		bmforking(m_line *node, int cx, int cy)
 			cx++;
 			node->heatmap[cy][cx] = 8;
 			cy--;
-			if (cx >= node->grid->sizex || cy == 0 || cx == 0)
+			if (cx <= 0 ||  cy >= node->grid->sizey  || cy <= 0 || cx >= node->grid->sizex)
 				return (1);
 		}
 	}

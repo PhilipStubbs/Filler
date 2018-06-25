@@ -13,7 +13,8 @@ static int		bmforking(m_line *node, int cx, int cy)
 			cx--;
 			node->heatmap[cy][cx] = 8;
 			cy++;
-			if (cx == 0 || cy == node->grid->sizey)
+			printf("%d 	%d\n",cy, cx );
+			if (cx <= 0 ||  cy >= node->grid->sizey  || cy <= 0 || cx >= node->grid->sizex)
 				return (1);
 		}
 	}
@@ -21,7 +22,7 @@ static int		bmforking(m_line *node, int cx, int cy)
 	{
 		node->heatmap[cy++][cx] = 9;
 		node->heatmap[cy][cx -1] = 8;
-		if (cy == node->grid->sizey)
+		if (cy == node->grid->sizey || cx == 0)
 			break ;
 	}
 	return (1);

@@ -26,9 +26,7 @@ char	*findstart(m_line *node, char c)
 		{
 			if(node->grid->mdhold[y][x] == c || node->grid->mdhold[y][x] == c - 32)
 			{
-				x++;
 				ret = ft_strjoin(ft_itoa(x++), " ");
-				y++;
 				ft_strcat(ret, ft_itoa(y++));
 				printf("findstart : [%d][%d]\n",y, x );
 				return(ret) ;

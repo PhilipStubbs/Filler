@@ -1,13 +1,9 @@
 
 #include "filler.h"
 
-int	loopnegx(m_line *node, int x, int y)
+int	loopnegx(m_line *node, int x, int y, int count)
 {
-	int	count;
-
-	count = 6;
-	while (node->heatmap[y][x] == 1 && count > 2 && !(node->heatmap[y][x] >= 2 
-		&& node->heatmap[y][x] <= 5)&& y < node->grid->sizey 
+	while (count > 2 && !(node->heatmap[y][x] == 0) && y < node->grid->sizey 
 		&& x < node->grid->sizex)
 	{
 		node->heatmap[y][x] = count;
@@ -22,14 +18,11 @@ int	loopnegx(m_line *node, int x, int y)
 	return (1);
 }
 
-int	loopposx(m_line *node, int x, int y)
+int	loopposx(m_line *node, int x, int y, int count)
 {
-	int	count;
 
-	count = 6;
-	while (node->heatmap[y][x] == 1 && count > 2 && !(node->heatmap[y][x] >= 2 
-		&& node->heatmap[y][x] <= 5)&& y < node->grid->sizey 
-		&& x < node->grid->sizex)
+	while (count > 2 && !(node->heatmap[y][x] == 0)&& y < node->grid->sizey 
+		&& x <= node->grid->sizex)
 	{
 		node->heatmap[y][x] = count;
 		x++;
@@ -43,14 +36,10 @@ int	loopposx(m_line *node, int x, int y)
 	return (1);
 }
 
-int	loopnegy(m_line *node, int x, int y)
+int	loopnegy(m_line *node, int x, int y, int count)
 {
-	int	count;
-
-	count = 6;
-	while (node->heatmap[y][x] == 1 && count > 2 && !(node->heatmap[y][x] >= 2 
-		&& node->heatmap[y][x] <= 5)&& y < node->grid->sizey 
-		&& x < node->grid->sizex)
+	while (count > 2 && !(node->heatmap[y][x] == 0) && y <= node->grid->sizey &&
+	x <= node->grid->sizex)
 	{
 		node->heatmap[y][x] = count;
 		y--;
@@ -63,13 +52,10 @@ int	loopnegy(m_line *node, int x, int y)
 	}
 	return (1);
 }
-int	loopposy(m_line *node, int x, int y)
+int	loopposy(m_line *node, int x, int y, int count)
 {
-	int	count;
-
-	count = 6;
-	while (node->heatmap[y][x] == 1 && count > 2 && !(node->heatmap[y][x] >= 2 
-		&& node->heatmap[y][x] <= 5))
+	while (count > 2 && !(node->heatmap[y][x] == 0) && y <= node->grid->sizey &&
+	x <= node->grid->sizex)
 	{	
 		node->heatmap[y][x] = count;
 		y++;
@@ -85,10 +71,12 @@ int	loopposy(m_line *node, int x, int y)
 
 int	enemparm(m_line *node, int l, int i)
 {
+	int	count;
+	count = 6;
 	write(1, "X\n", 2);
-	loopnegx(node, i-1, l);
-	loopposx(node, i+1, l);
-	loopnegy(node, i, l-1);
-	loopposy(node, i, l+1);
+	loopnegx(node, i-1, l, count);
+	loopposx(node, i+1, l, count);
+	loopnegy(node, i, l-1, count);
+	loopposy(node, i, l+1, count);
 	return (1);
 }

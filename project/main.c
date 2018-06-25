@@ -8,8 +8,6 @@ m_line	*malloctime(m_line *node)
 	node->token = (g_line*)malloc(sizeof(g_line));
 	node->token->hold = (char*)malloc(sizeof(char));
 	node->heatmapcreat = 0;
-	// node->heatmap = (int**)malloc(sizeof(node->heatmap));
-	// node->heatmap = NULL;
 	node->grid->sizex = 0;
 	node->grid->sizey = 0;
 
@@ -52,13 +50,12 @@ int	main()
 	m_line *node;
 	int fd;
 
-	fd = open("output01.txt", O_RDONLY);
+	fd = open("output02.txt", O_RDONLY);
 	// fd = 0;
 	node = NULL;
 	node = malloctime(node);
 	findplayer(node, fd);
 	findgrid(node, fd);
- 	// printnode(node->grid->mdhold);
 	findtoken(node, fd);
 	printnode(node->token->mdhold);
 

@@ -11,14 +11,13 @@ int		smplayertwo(m_line *node, int myy, int myx, char **txy)
 	while(count++ <= temp)
 	{
 		if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
-			node->heatmap[myy][myx] = 9;
-		myx--;
+			node->heatmap[myy][myx] = 5;
+		if (node->heatmap[myy][myx-1] != 2 && myx < node->grid->sizex)
+			node->heatmap[myy][myx-1] = 4;
 		myx--;
 		myx--;
 		if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
-			node->heatmap[myy][myx] = 9;
-		if (node->heatmap[myy][myx-2] != 2)
-			node->heatmap[myy][myx-2] = 9;
+			node->heatmap[myy][myx] = 4;
 		myy--;
 		if (myx == node->grid->sizex || myy == node->grid->sizey )
 			return (1) ;
@@ -41,8 +40,8 @@ int		mmplayertwo(m_line *node, int myy, int myx, char **txy)
 		myx--;
 		if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
 			node->heatmap[myy][myx] = 4;
-		if (node->heatmap[myy][myx-2] != 2)
-			node->heatmap[myy][myx-2] = 4;
+		if (node->heatmap[myy][myx+1] != 2)
+			node->heatmap[myy][myx+2] = 4;
 		myy--;
 		myx--;
 		if (myx == node->grid->sizex || myy == node->grid->sizey )
@@ -83,8 +82,6 @@ int		lineplayertwo(m_line *node, int myy, int myx, char **txy)
 		smplayertwo(node, myy, myx, txy);
 	else if (node->grid->sizey == 24)
 	{
-		write(1, "mm found\n", 9);
-
 		mmplayertwo(node, myy, myx, txy);
 		return(1);
 	}
@@ -93,6 +90,6 @@ int		lineplayertwo(m_line *node, int myy, int myx, char **txy)
 		lmplayertwo(node, myy, myx, txy);
 		return(1);
 	}
-	// forkingplayertwo(node, myx, myy);
 	return (1);
 }
+
