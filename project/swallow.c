@@ -59,27 +59,13 @@ int		setplayerpieces(m_line *node, char c, int repval)
 int		findwho(m_line *node)
 {
 	int		repval;
-	char	c;
 
 	repval = 2;
-	c = node->piece;
 	setplayerpieces(node, node->piece ,repval);
-	if (node->piece == 'o')
-		c = 'x';
-	else if (node->piece == 'x')
-		c = 'o';
 	repval = 0;
-	setplayerpieces(node, c ,repval);
+	setplayerpieces(node,  node->enem ,repval);
 	return (1);
 }
-
-
-int		forkmapcreate(m_line *node)
-{
-	linetoenem(node);
-	return (1);
-}
-
 
 void	createmem(m_line *node)
 {
@@ -94,19 +80,14 @@ void	createmem(m_line *node)
 		l++;
 	}
 	resetgrid(node);
-	write(1, "resetgrid\n", 10);
 	findwho(node);
-	write(1, "findwho\n", 8);
-	forkmapcreate(node);
+	linetoenem(node);
 }
 
-
-int	searchandreplace(m_line *node, int s, int r)
+int	findenem(m_line *node)
 {
 	int	i;
 	int	l;
-	int	tempi;
-	int templ;
 
 	l = 0;
 	while(l < node->grid->sizey)
@@ -114,7 +95,7 @@ int	searchandreplace(m_line *node, int s, int r)
 		i = 0;
 		while(i < node->grid->sizex)
 		{		
-			if (node->heatmap[l][i] == s)
+			if (node->heatmap[l][i] == 0)
 			{
 				enemparm(node, l, i);
 			}
@@ -124,22 +105,15 @@ int	searchandreplace(m_line *node, int s, int r)
 	}
 	return (1);
 }
-int	chokenemy(m_line *node)
-{	
-	searchandreplace(node,0, 5);
-	return(1);
-}
+
 int	swallow(m_line *node)
 {
-	char enem;
 	if (node->heatmapcreat == 0)
 	{
 		createmem(node);
 		node->heatmapcreat = 1;
 	}
-
 	findwho(node);
-	// write(1, "afterfindwho\n",13);
-	chokenemy(node);
+	findenem(node);
 	return (1);
 }
