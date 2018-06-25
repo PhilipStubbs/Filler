@@ -14,6 +14,7 @@ SRC = findgrid.c \
 	lineplayertwo.c \
 	playeroneforking.c \
 	playertwoforking.c \
+	validpos.c \
 	main.c \
 
 

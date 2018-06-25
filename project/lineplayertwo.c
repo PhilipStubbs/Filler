@@ -65,8 +65,8 @@ int		lmplayertwo(m_line *node, int myy, int myx, char **txy)
 		myx--;
 		if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
 			node->heatmap[myy][myx] = 4;
-		if (node->heatmap[myy][myx-2] != 2)
-			node->heatmap[myy][myx-2] = 4;
+		if (node->heatmap[myy][myx+2] != 2)
+			node->heatmap[myy][myx+2] = 4;
 		myy--;
 		if (myx == node->grid->sizex || myy == node->grid->sizey )
 			break ;

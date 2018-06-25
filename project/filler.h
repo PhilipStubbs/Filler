@@ -18,13 +18,9 @@
 
 typedef	struct		u_line
 {
-	char			*hold;
 	char			**mdhold;
 	int				sizex;
 	int				sizey;
-	int				x;
-	int				y;
-
 }					g_line;
 
 typedef	struct		i_line
@@ -39,21 +35,21 @@ typedef	struct		i_line
 
 }					m_line;
 
+int					lineplayerone(m_line *node, int myy, int myx, char **txy);
+int					lineplayertwo(m_line *node, int myy, int myx, char **txy);
+int					forkingplayerone(m_line *node, int cx, int cy);
+int					forkingplayertwo(m_line *node, int cx, int cy);
+int					enemparm(m_line *node, int l, int i);
+int					validpos(m_line *node, int y, int x);
 char				*findplayer(m_line *node, int fd);
 char				*findstart(m_line *node, char c);
 int					updategrid(m_line *node, int fd);
 int					findtoken(m_line *node, int fd);
 int					findgrid(m_line *node, int fd);
 char				**ft_split(char *str, char c);
+
+int					linetoenem(m_line *node);
 int					swallow(m_line *node);
 int					skipline(int fd);
-int					linetoenem(m_line *node);
-int					forking(m_line *node, int cx, int cy);
-int					lineplayerone(m_line *node, int myy, int myx, char **txy);
-int					lineplayertwo(m_line *node, int myy, int myx, char **txy);
-int					forkingplayerone(m_line *node, int cx, int cy);
-int					forkingplayertwo(m_line *node, int cx, int cy);
-int					enemparm(m_line *node, int l, int i);
-
 
 #endif

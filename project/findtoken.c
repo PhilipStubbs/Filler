@@ -31,12 +31,6 @@ int		findtoken(m_line *node, int fd)
 	splitline = ft_split(line, ' ');
 	node->token->sizey = ft_atoi(splitline[1]);
 	node->token->sizex = ft_atoi(splitline[2]);
-	if (node->token->hold)
-		free(node->token->hold);
-
-	node->token->hold = (char*)ft_memalloc(sizeof(char) *					//oldway
-		(node->token->sizex * node->token->sizey + node->token->sizey));
-
 	node->token->mdhold = (char**)ft_memalloc(sizeof(char) *
 		(node->token->sizex * node->token->sizey));
 
@@ -44,10 +38,6 @@ int		findtoken(m_line *node, int fd)
 	while (i < node->token->sizey )
 	{
 		get_next_line(fd, &line);
-		
-		ft_strcat(node->token->hold, line);
-		ft_strcat(node->token->hold, "|");
-
 		intotoken(node, line, i);
 		i++;
 	}
