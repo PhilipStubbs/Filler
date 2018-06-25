@@ -73,7 +73,6 @@ int	enemparm(m_line *node, int l, int i)
 {
 	int	count;
 	count = 8;
-	write(1, "X\n", 2);
 	loopnegx(node, i-1, l, count);
 	loopposx(node, i+1, l, count);
 	loopnegy(node, i, l-1, count);

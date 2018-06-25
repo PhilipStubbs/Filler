@@ -49,24 +49,31 @@ int	main()
 	m_line *node;
 	int fd;
 
-	fd = open("output01.txt", O_RDONLY);
-	// fd = 0;
+	// fd = open("output01.txt", O_RDONLY);
+	fd = 0;
 	node = NULL;
 	node = malloctime(node);
 	findplayer(node, fd);
 	findgrid(node, fd);
 	findtoken(node, fd);
-	printnode(node->token->mdhold);
 
-	swallow(node);
-	printnodenbr(node);
+	// printnode(node->token->mdhold);
+
+	while(1)
+	{
+		swallow(node);
+		tokenplacement(node);
+		updategrid(node, fd);
+		findtoken(node, fd);
+		printnodenbr(node);
+	}
 	// ft_putendl_fd("29 30", 1);
 
 	// updategrid(node, fd);
 	// printnode(node->grid->mdhold);
 	// findtoken(node, fd);
 	// ft_putchar_fd('[', 2) ;
-	printf("[%d]\n", validpos(node,2,1));
+	// printf("[%d]\n", validpos(node,3,4));
 	// findtoken(node, fd);
 
 	// ft_putchar_fd(']', 2);

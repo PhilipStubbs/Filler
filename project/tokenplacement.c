@@ -26,7 +26,7 @@ int	scorecount(m_line *node, int y, int x)
 void placementoutput(int y, int x)
 {
 	char *ret;
-
+	
 	ret = ft_strjoin(ft_itoa(y), " ");
 	ft_strcat(ret, ft_itoa(x));
 	ft_putendl_fd(ret, 1);
