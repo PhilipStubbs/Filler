@@ -32,7 +32,7 @@ int		mmplayertwo(m_line *node, int myy, int myx, char **txy)
 	int	temp;
 
 	count = 0;
-	temp = atoi(txy[1]) / 2;
+	temp = atoi(txy[1]) / 3;
 	while(count++ <= temp)
 	{
 		if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
@@ -99,7 +99,6 @@ int		lmplayertwo(m_line *node, int myy, int myx, char **txy)
 
 int		lineplayertwo(m_line *node, int myy, int myx, char **txy)
 {
-	write( 1, "lineplayertwo\n", 14);
 	if (node->grid->sizey == 15)
 		smplayertwo(node, myy, myx, txy);
 	else if (node->grid->sizey == 24)

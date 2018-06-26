@@ -100,23 +100,25 @@ int	main()
 	{
 		
 		swallow(node);
+
+		// printnodenbr(node);
 		
-		// ft_putendl_fd("swallow", 2);
+		ft_putendl_fd("Player 2 swallow", 2);
 		// printtokenhold(node);
 		// ft_putendl_fd("BEFORE tokenplacement", 2);
 
 		tokenplacement(node);
 
-		// ft_putendl_fd("tokenplacement", 2);
+		ft_putendl_fd("Player 2 tokenplacement", 2);
 
 		if (node->playable == 0)
 		{
-			ft_putendl_fd("EXIT", 2);
+			ft_putendl_fd("player 2 EXIT", 2);
 			return (0);
 		}
 		getinfo(node,fd);
 		// updategrid(node, fd);
-		// ft_putendl_fd("updategrid grid", 2);
+		ft_putendl_fd("Player 2 updategrid grid", 2);
 		// findtoken(node, fd);
 		// ft_putendl_fd("findtoken", 2);
 		
