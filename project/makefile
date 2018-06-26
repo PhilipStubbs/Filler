@@ -17,6 +17,7 @@ SRC = findgrid.c \
 	validpos.c \
 	enemparm.c \
 	tokenplacement.c \
+	getinfo.c \
 	main.c \
 
 

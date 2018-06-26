@@ -36,7 +36,7 @@ int		findsize(char *line, m_line *node, int fd)
 	splitline = ft_split(line, ' ');
 	node->grid->sizey = ft_atoi(splitline[1]);
 	node->grid->sizex = ft_atoi(splitline[2]);
-	node->grid->mdhold =(char**)ft_memalloc(sizeof(char) * (node->grid->sizey * node->grid->sizex));
+	node->grid->mdhold =(char**)ft_memalloc(sizeof(char*) * (node->grid->sizey * node->grid->sizex));
 	if (!node->grid->mdhold)
 		return (-1);
 	if (node->grid->sizey == 100)
@@ -51,6 +51,7 @@ void	catintonode(char *line, m_line *node, int i)
 
 		splitline = ft_split(line, ' ');
 		node->grid->mdhold[i] = (char*)ft_memalloc(sizeof(char) * node->grid->sizex + 1);
+		ft_strclr(node->grid->mdhold[i]);
 		ft_strcat(node->grid->mdhold[i], splitline[1]);
 }
 

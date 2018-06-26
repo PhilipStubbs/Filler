@@ -30,6 +30,7 @@ typedef	struct		i_line
 	int				heatmapcreat;
 	char			piece;
 	char			enem;
+	int				playable;
 	g_line			*token;
 	g_line			*grid;
 
@@ -51,6 +52,8 @@ int					tokenplacement(m_line *node);
 int					linetoenem(m_line *node);
 int					swallow(m_line *node);
 int					skipline(int fd);
+int					getinfo(m_line *node, int fd);
 
 
 #endif
+
