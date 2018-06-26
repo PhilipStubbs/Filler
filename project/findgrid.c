@@ -12,19 +12,19 @@
 
 #include "filler.h"
 
-void	bigmap (m_line *node)
-{
-	if (node->player == 1)
-	{
-		node->piece = 'x';
-		node->enem = 'o';
-	}
-	else if (node->player == 2)
-	{
-		node->piece = 'o';
-		node->enem = 'x';
-	}
-}
+// void	bigmap (m_line *node)
+// {
+// 	if (node->player == 1)
+// 	{
+// 		node->piece = 'x';
+// 		node->enem = 'o';
+// 	}
+// 	else if (node->player == 2)
+// 	{
+// 		node->piece = 'o';
+// 		node->enem = 'x';
+// 	}
+// }
 
 int		findsize(char *line, m_line *node, int fd)
 {
@@ -39,8 +39,8 @@ int		findsize(char *line, m_line *node, int fd)
 	node->grid->mdhold =(char**)ft_memalloc(sizeof(char*) * (node->grid->sizey * node->grid->sizex));
 	if (!node->grid->mdhold)
 		return (-1);
-	if (node->grid->sizey == 100)
-		bigmap(node);
+	// if (node->grid->sizey == 100)
+	// 	bigmap(node);
 	return (1);
 }
 

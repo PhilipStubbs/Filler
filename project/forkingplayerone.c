@@ -5,8 +5,21 @@ static int		bmforking(m_line *node, int cx, int cy)
 {
 	if (node->grid->sizey == 100)
 	{
+		// while (1)
+		// {
+		// 	node->heatmap[cy][cx] = 9;
+		// 	cx++;
+		// 	node->heatmap[cy][cx] = 8;
+		// 	cx++;
+		// 	node->heatmap[cy][cx] = 8;
+		// 	cy--;
+		// 	if (cx <= 0 ||  cy >= node->grid->sizey  || cy <= 0 || cx >= node->grid->sizex)
+		// 		return (1);
+		// }
 		while (1)
 		{
+
+
 			node->heatmap[cy][cx] = 9;
 			cx--;
 			node->heatmap[cy][cx] = 8;

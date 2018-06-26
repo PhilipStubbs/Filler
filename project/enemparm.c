@@ -22,7 +22,7 @@ int	loopposx(m_line *node, int x, int y, int count)
 {
 
 	while (count > 5 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9|| node->heatmap[y][x] == 2)&& y < node->grid->sizey 
-		&& x <= node->grid->sizex)
+		&& x < node->grid->sizex)
 	{
 		node->heatmap[y][x] = count;
 		x++;
@@ -38,8 +38,8 @@ int	loopposx(m_line *node, int x, int y, int count)
 
 int	loopnegy(m_line *node, int x, int y, int count)
 {
-	while (count > 5 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9 || node->heatmap[y][x] == 2) && y <= node->grid->sizey &&
-	x <= node->grid->sizex)
+	while (count > 5 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9 || node->heatmap[y][x] == 2) && y < node->grid->sizey &&
+	x < node->grid->sizex)
 	{
 		node->heatmap[y][x] = count;
 		y--;
@@ -54,8 +54,8 @@ int	loopnegy(m_line *node, int x, int y, int count)
 }
 int	loopposy(m_line *node, int x, int y, int count)
 {
-	while (count > 5 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9|| node->heatmap[y][x] == 2) && y <= node->grid->sizey &&
-	x <= node->grid->sizex)
+	while (count > 5 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9|| node->heatmap[y][x] == 2) && y < node->grid->sizey &&
+	x < node->grid->sizex)
 	{	
 		node->heatmap[y][x] = count;
 		y++;
@@ -74,8 +74,12 @@ int	enemparm(m_line *node, int l, int i)
 	int	count;
 	count = 8;
 	loopnegx(node, i-1, l, count);
+	// ft_putendl_fd("loopnegx", 2);
 	loopposx(node, i+1, l, count);
+	// ft_putendl_fd("loopposx", 2);
 	loopnegy(node, i, l-1, count);
+	// ft_putendl_fd("loopnegy", 2);
 	loopposy(node, i, l+1, count);
+	// ft_putendl_fd("loopposy", 2);
 	return (1);
 }

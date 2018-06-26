@@ -114,6 +114,6 @@ int	swallow(m_line *node)
 		node->heatmapcreat = 1;
 	}
 	findwho(node);
-	// findenem(node);
+	findenem(node);
 	return (1);
 }
