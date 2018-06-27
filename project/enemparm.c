@@ -3,16 +3,19 @@
 
 int	loopnegx(m_line *node, int x, int y, int count)
 {
-	while (count > 5 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9 || node->heatmap[y][x] == 2) && y < node->grid->sizey 
-		&& x < node->grid->sizex)
+	if (x > 0 && y > 0)
 	{
-		node->heatmap[y][x] = count;
-		x--;
-		count--;
-		if (x <= 0)
+		while (count > 3 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9 || node->heatmap[y][x] == 2) && y < node->grid->sizey 
+			&& x < node->grid->sizex && y > 0 && x > 0)
 		{
-			node->heatmap[y][x] = count--;
-			return (1);
+			node->heatmap[y][x] = count;
+			x--;
+			count--;
+			if (x < 0)
+			{
+				node->heatmap[y][x] = count--;
+				return (1);
+			}
 		}
 	}
 	return (1);
@@ -20,50 +23,58 @@ int	loopnegx(m_line *node, int x, int y, int count)
 
 int	loopposx(m_line *node, int x, int y, int count)
 {
-
-	while (count > 5 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9|| node->heatmap[y][x] == 2)&& y < node->grid->sizey 
-		&& x < node->grid->sizex)
+	if (x > 0 && y > 0)
 	{
-		node->heatmap[y][x] = count;
-		x++;
-		count--;
-		if(x == node->grid->sizex)
+		while (count > 3 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9|| node->heatmap[y][x] == 2) && y < node->grid->sizey 
+			&& x < node->grid->sizex && y > 0 && x > 0)
 		{
 			node->heatmap[y][x] = count;
-			return (1);
-		}	
+			x++;
+			count--;
+			if(x == node->grid->sizex)
+			{
+				node->heatmap[y][x] = count;
+				return (1);
+			}	
+		}
 	}
 	return (1);
 }
 
 int	loopnegy(m_line *node, int x, int y, int count)
 {
-	while (count > 5 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9 || node->heatmap[y][x] == 2) && y < node->grid->sizey &&
-	x < node->grid->sizex)
+	if (x > 0 && y > 0)
 	{
-		node->heatmap[y][x] = count;
-		y--;
-		count--;
-		if (y <= 0)
+		while (count > 3 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9 || node->heatmap[y][x] == 2) && y < node->grid->sizey &&
+		x < node->grid->sizex && y > 0 && x > 0)
 		{
 			node->heatmap[y][x] = count;
-			return (1);
+			y--;
+			count--;
+			if (y < 0)
+			{
+				node->heatmap[y][x] = count;
+				return (1);
+			}
 		}
 	}
 	return (1);
 }
 int	loopposy(m_line *node, int x, int y, int count)
 {
-	while (count > 5 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9|| node->heatmap[y][x] == 2) && y < node->grid->sizey &&
-	x < node->grid->sizex)
-	{	
-		node->heatmap[y][x] = count;
-		y++;
-		count--;
-		if(y == node->grid->sizey)
-		{
+	if (x > 0 && y > 0)
+	{
+		while (count > 3 && !(node->heatmap[y][x] == 0 || node->heatmap[y][x] == 9|| node->heatmap[y][x] == 2) && y < node->grid->sizey &&
+		x < node->grid->sizex && y > 0 && x > 0)
+		{	
 			node->heatmap[y][x] = count;
-			return (1);
+			y++;
+			count--;
+			if(y == node->grid->sizey)
+			{
+				node->heatmap[y][x] = count;
+				return (1);
+			}
 		}
 	}
 	return (1);

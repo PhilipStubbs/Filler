@@ -42,7 +42,7 @@ int		mmplayerone(m_line *node, int myy, int myx, char **txy)
 		if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
 			node->heatmap[myy][myx] = 40;
 		if (node->heatmap[myy][myx-2] != 2)
-			node->heatmap[myy][myx-2] = 40;
+			// node->heatmap[myy][myx-2] = 40;
 		myy++;
 		myx++;
 		if (myx == node->grid->sizex || myy == node->grid->sizey )
@@ -58,16 +58,16 @@ int		lmplayerone(m_line *node, int myy, int myx, char **txy)
 	int	temp;
 
 	count = 0;
-	temp = atoi(txy[1]) / 3;
+	temp = atoi(txy[1]) / 5;
 	while(count++ <= temp)
 	{
 		if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
 			node->heatmap[myy][myx] = 5;
 		myx--;
-		if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
-			node->heatmap[myy][myx] = 4;
-		if (node->heatmap[myy][myx+2] != 2)
-			node->heatmap[myy][myx+2] = 4;
+		// if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
+			// node->heatmap[myy][myx] = 4;
+		// if (node->heatmap[myy][myx+2] != 2)
+			// node->heatmap[myy][myx+2] = 4;
 		myy--;
 		if (myx == node->grid->sizex || myy == node->grid->sizey )
 			break ;

@@ -101,15 +101,15 @@ int	main()
 		
 		swallow(node);
 
-		// printnodenbr(node);
+		printnodenbr(node);
 		
-		ft_putendl_fd("Player 2 swallow", 2);
-		// printtokenhold(node);
+		// ft_putendl_fd("Player 2 swallow", 2);
+		printtokenhold(node);
 		// ft_putendl_fd("BEFORE tokenplacement", 2);
 
 		tokenplacement(node);
 
-		ft_putendl_fd("Player 2 tokenplacement", 2);
+		// ft_putendl_fd("Player 2 tokenplacement", 2);
 
 		if (node->playable == 0)
 		{
