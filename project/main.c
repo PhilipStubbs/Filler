@@ -95,21 +95,18 @@ int	main()
 	// getinfo(node,fd);
 
 	// printnode(node->token->mdhold);
-
+	// node->playable = 0
 	while(node->playable)
 	{
 		
 		swallow(node);
 
 		printnodenbr(node);
-		
-		// ft_putendl_fd("Player 2 swallow", 2);
 		printtokenhold(node);
-		// ft_putendl_fd("BEFORE tokenplacement", 2);
 
 		tokenplacement(node);
 
-		// ft_putendl_fd("Player 2 tokenplacement", 2);
+		// node->playable = 0;
 
 		if (node->playable == 0)
 		{
@@ -117,11 +114,8 @@ int	main()
 			return (0);
 		}
 		getinfo(node,fd);
-		// updategrid(node, fd);
 		ft_putendl_fd("Player 2 updategrid grid", 2);
-		// findtoken(node, fd);
-		// ft_putendl_fd("findtoken", 2);
-		
+
 
 	
 	}

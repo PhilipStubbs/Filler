@@ -103,7 +103,8 @@ int		lineplayertwo(m_line *node, int myy, int myx, char **txy)
 		smplayertwo(node, myy, myx, txy);
 	else if (node->grid->sizey == 24)
 	{
-		mmplayertwo(node, myy, myx, txy);
+		// mmplayertwo(node, myy, myx, txy);
+		forkingplayertwo(node, myx, myy);
 		return(1);
 	}
 	else if (node->grid->sizey == 100)

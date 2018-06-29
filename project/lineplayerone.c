@@ -33,7 +33,7 @@ int		mmplayerone(m_line *node, int myy, int myx, char **txy)
 	int	temp;
 
 	count = 0;
-	temp = atoi(txy[1]) / 10;
+	temp = atoi(txy[1]) / 20;
 	while(count++ <= temp)
 	{
 		if (node->heatmap[myy][myx] != 2 && myx < node->grid->sizex)
@@ -106,7 +106,8 @@ int		lineplayerone(m_line *node, int myy, int myx, char **txy)
 		smplayerone(node, myy, myx, txy);
 	else if (node->grid->sizey == 24)
 	{
-		mmplayerone(node, myy, myx, txy);
+		forkingplayerone(node, myx, myy);
+		// mmplayerone(node, myy, myx, txy);
 		return(1);
 	}
 	else if (node->grid->sizey == 100)
