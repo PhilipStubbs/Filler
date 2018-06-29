@@ -84,7 +84,6 @@ int	getinfo(m_line *node, int fd)
 	// line = NULL;
 
 	get_next_line(0, &line);
-	ft_putendl_fd(line, 2);
 	while(ft_strstr(line, "000") == NULL)
 	{
 		get_next_line(fd, &line);
