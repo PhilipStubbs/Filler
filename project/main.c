@@ -101,23 +101,20 @@ int	main()
 		
 		swallow(node);
 
-		printnodenbr(node);
-		printtokenhold(node);
+		// printnodenbr(node);
+		// printtokenhold(node);
 
 		tokenplacement(node);
-
+		// printf("AFTERPALCEMETNT\n");
 		// node->playable = 0;
 
 		if (node->playable == 0)
 		{
-			ft_putendl_fd("player 2 EXIT", 2);
+			ft_putendl_fd("EXIT", 2);
 			return (0);
 		}
 		getinfo(node,fd);
-		ft_putendl_fd("Player 2 updategrid grid", 2);
-
-
-	
+		
 	}
 	return(0);
 }

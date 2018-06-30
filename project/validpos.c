@@ -64,48 +64,32 @@ int	validpos(m_line *node, int y, int x)
 
 	count = 0;
 
+
 	while (l < node->token->sizey)
 	{
 		i = 0;
 		while (i < node->token->sizex)
 		{
-			
-		
-				// ft_putnbr_fd(l, 2);
-				// ft_putchar_fd(' ', 2);
-				// ft_putnbr_fd(i, 2);
-				// ft_putchar_fd('	', 2);
-			if (node->token->mdhold[l][i] == '*' && (y+l > 0 && x+i > 0) && (y+l < node->grid->sizey && x+i < node->grid->sizex))
+
+			if (node->token->mdhold[l][i] == '*' && (y+l >= 0 && x+i >= 0) && (y+l < node->grid->sizey && x+i < node->grid->sizex))
 				count++;
-			// 
-			// else
-			// 	return (0);
 
-
-			if (node->token->mdhold[l][i] == '*' && (node->grid->mdhold[y+l][x+i] == node->piece || node->grid->mdhold[y+l][x+i] == node->piece - 32))
+			if (node->token->mdhold[l][i] == '*' && (node->grid->mdhold[y+l][x+i] == node->piece || node->grid->mdhold[y+l][x+i] == node->piece - 32) && y+l < node->grid->sizey && x+i < node->grid->sizex)
 				omp++;
 			// ft_putendl_fd("B", 2);
+			;
 			if ((node->grid->mdhold[y+l][x+i] == node->enem || node->grid->mdhold[y+l][x+i] == node->enem -32)) //&& y+l < node->grid->sizey && x+i < node->grid->sizex)
 			{
-				// ft_putendl_fd("return", 2);
 				return (0);
 			}
-			// ft_putendl_fd("C", 2);
 
-			// ft_putendl_fd("X", 2);
-
-				// ft_putnbr_fd(l, 2);
-				// ft_putchar_fd(' ', 2);
-				// ft_putnbr_fd(i, 2);
-
-				// ft_putchar_fd('	', 2);
-				// ft_putnbr_fd(node->token->sizex, 2);
-				// ft_putchar_fd(':', 2);
-				// ft_putnbr_fd(node->token->sizey, 2);
-				// ft_putchar_fd('\n', 2);
 			i++;
+			if ( x + i  >= node->grid->sizex)
+				break ;
 		}
 		l++;
+		if ( y + l  >= node->grid->sizey)
+			break ;
 	}
 	return(returnval(omp, count, stars));
 

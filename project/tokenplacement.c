@@ -36,6 +36,37 @@ void placementoutput(int y, int x)
 
 }
 
+int	*findfirststar(m_line *node)
+{
+	int	x;
+	int	y;
+	int	*ret;
+
+	y = 0;
+
+	ret = (int*)ft_memalloc(sizeof(int) *2);
+	ret[1] = node->token->sizey;
+	ret[0] = node->token->sizex;
+	while (y < node->token->sizey)
+	{
+		x = 0;
+		while (x < node->token->sizex)
+		{
+			if (node->token->mdhold[y][x] == '*')
+			{	
+				if (ret[0] > x)
+					ret[0] = x;
+				if (ret[1] > y)
+					ret[1] = y;
+				break;
+			}
+			x++;
+		}
+		y++;
+	}
+	return (ret);
+}
+
 int	tokenplacement(m_line *node)
 {
 	int	x;
@@ -44,16 +75,19 @@ int	tokenplacement(m_line *node)
 	int	tempy;
 	int	score;
 	int	tempscore;
+	int	*xneg;
 	// char *ret;
 
-	y = 0 - node->grid->sizey;
+	
+	xneg = findfirststar(node);
+	y = 0; //- xneg[1];
 	score = 0;
 	tempy = 0;
 	tempx = 0;
 	tempscore = 0;
 	while (y < node->grid->sizey)
 	{
-		x = 0 - node->grid->sizex;
+		x = 0 - xneg[0];
 		while (x < node->grid->sizex)
 		{
 			if(validpos(node, y, x) == 1)
