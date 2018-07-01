@@ -80,7 +80,7 @@ int	tokenplacement(m_line *node)
 
 	
 	xneg = findfirststar(node);
-	y = 0; //- xneg[1];
+	y = 0 - xneg[1];
 	score = 0;
 	tempy = 0;
 	tempx = 0;

@@ -71,18 +71,17 @@ int	validpos(m_line *node, int y, int x)
 		while (i < node->token->sizex)
 		{
 
+
 			if (node->token->mdhold[l][i] == '*' && (y+l >= 0 && x+i >= 0) && (y+l < node->grid->sizey && x+i < node->grid->sizex))
 				count++;
 
 			if (node->token->mdhold[l][i] == '*' && (node->grid->mdhold[y+l][x+i] == node->piece || node->grid->mdhold[y+l][x+i] == node->piece - 32) && y+l < node->grid->sizey && x+i < node->grid->sizex)
 				omp++;
-			// ft_putendl_fd("B", 2);
-			;
-			if ((node->grid->mdhold[y+l][x+i] == node->enem || node->grid->mdhold[y+l][x+i] == node->enem -32)) //&& y+l < node->grid->sizey && x+i < node->grid->sizex)
+			if (y >= 0)
 			{
-				return (0);
+				if ((node->grid->mdhold[y+l][x+i] == node->enem || node->grid->mdhold[y+l][x+i] == node->enem -32)) //&& y+l < node->grid->sizey && x+i < node->grid->sizex)
+					return (0);
 			}
-
 			i++;
 			if ( x + i  >= node->grid->sizex)
 				break ;

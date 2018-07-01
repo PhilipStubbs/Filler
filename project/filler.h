@@ -47,12 +47,13 @@ char				*findstart(m_line *node, char c);
 int					updategrid(m_line *node, int fd);
 int					findtoken(m_line *node, int fd);
 int					findgrid(m_line *node, int fd);
+int					getinfo(m_line *node, int fd);
 char				**ft_split(char *str, char c);
 int					tokenplacement(m_line *node);
 int					linetoenem(m_line *node);
 int					swallow(m_line *node);
 int					skipline(int fd);
-int					getinfo(m_line *node, int fd);
+
 
 
 #endif
