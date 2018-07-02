@@ -30,7 +30,7 @@ void placementoutput(int y, int x)
 	ret = ft_strjoin(ft_itoa(y), " ");
 	ft_strcat(ret, ft_itoa(x));
 	
-	ft_putendl_fd(ret, 2);
+	// ft_putendl_fd(ret, 2);
 	ft_putendl_fd(ret, 1);
 	free(ret);
 
