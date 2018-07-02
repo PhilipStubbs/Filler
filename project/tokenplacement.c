@@ -64,6 +64,9 @@ int	*findfirststar(m_line *node)
 		}
 		y++;
 	}
+	if (y == node->token->sizey)
+		ret[1] = 0;
+	
 	return (ret);
 }
 
@@ -75,22 +78,21 @@ int	tokenplacement(m_line *node)
 	int	tempy;
 	int	score;
 	int	tempscore;
-	int	*xneg;
-	// char *ret;
+	int	*xyneg;
 
 	
-	xneg = findfirststar(node);
-	y = 0 - xneg[1];
+	xyneg = findfirststar(node);
+	y = 0 - xyneg[1];
 	score = 0;
 	tempy = 0;
 	tempx = 0;
 	tempscore = 0;
 	while (y < node->grid->sizey)
 	{
-		x = 0 - xneg[0];
+		x = 0 - xyneg[0];
 		while (x < node->grid->sizex)
 		{
-			if(validpos(node, y, x) == 1)
+			if(validpos(node, y, x, xyneg) == 1)
 			{
 				tempscore = scorecount(node, y, x);
 				if (tempscore > score)

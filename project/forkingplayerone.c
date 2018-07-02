@@ -35,12 +35,26 @@ int		forkingplayerone(m_line *node, int cx, int cy)
 
 	x = cx;
 	y = cy - 1;
-	while (1)
+	if (node->grid->sizey == 15)
 	{
-		node->heatmap[cy][x++] = 5;
-		// node->heatmap[cy - 1][x] = 8;
-		if (x == node->grid->sizex)
-			break ;
+		while (1)
+		{
+			node->heatmap[cy][x++] = 15;
+			node->heatmap[y--][x] = 15;
+			// node->heatmap[cy - 1][x] = 8;
+			if (x == node->grid->sizex || y == 0)
+				break ;
+		}
+	}
+	else
+	{
+	while (1)
+		{
+			node->heatmap[cy][x++] = 5;
+			// node->heatmap[cy - 1][x] = 8;
+			if (x == node->grid->sizex)
+				break ;
+		}
 	}
 	cx -= 1;
 	bmforking(node, cx, y);

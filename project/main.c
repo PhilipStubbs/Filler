@@ -78,6 +78,28 @@ void	printtokenhold(m_line *node)
 	ft_putchar_fd(']', 2);
 }
 
+void	printgridhold(m_line *node)
+{
+	int i;
+	int	l;
+
+	i = 0;
+	l = 0;
+	ft_putchar_fd('[', 2);
+	while(l < node->grid->sizey)
+	{
+		i = 0;
+		while(i < node->grid->sizex)
+		{
+			ft_putchar_fd(node->grid->mdhold[l][i], 2);
+			i++;
+		}
+		ft_putchar_fd('\n', 2);
+		l++;
+	}
+	ft_putchar_fd(']', 2);
+}
+
 int	main()
 {
 	m_line *node;
@@ -100,12 +122,13 @@ int	main()
 	{
 		
 		swallow(node);
-
+		// printgridhold(node);
 		// printnodenbr(node);
 		// printtokenhold(node);
 
 		tokenplacement(node);
-		// printf("AFTERPALCEMETNT\n");
+
+		// ft_putendl_fd("tokenplacement", 2);
 		// node->playable = 0;
 
 		if (node->playable == 0)
@@ -114,6 +137,7 @@ int	main()
 			return (0);
 		}
 		getinfo(node,fd);
+		// ft_putendl_fd("getinfo", 2);
 		
 	}
 	return(0);

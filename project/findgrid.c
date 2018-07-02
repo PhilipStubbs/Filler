@@ -12,20 +12,6 @@
 
 #include "filler.h"
 
-// void	bigmap (m_line *node)
-// {
-// 	if (node->player == 1)
-// 	{
-// 		node->piece = 'x';
-// 		node->enem = 'o';
-// 	}
-// 	else if (node->player == 2)
-// 	{
-// 		node->piece = 'o';
-// 		node->enem = 'x';
-// 	}
-// }
-
 int		findsize(char *line, m_line *node, int fd)
 {
 	char	**splitline;

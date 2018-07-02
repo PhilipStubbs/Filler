@@ -41,7 +41,7 @@ int					lineplayertwo(m_line *node, int myy, int myx, char **txy);
 int					forkingplayerone(m_line *node, int cx, int cy);
 int					forkingplayertwo(m_line *node, int cx, int cy);
 int					enemparm(m_line *node, int l, int i);
-int					validpos(m_line *node, int y, int x);
+int					validpos(m_line *node, int y, int x, int *xyneg);
 char				*findplayer(m_line *node, int fd);
 char				*findstart(m_line *node, char c);
 int					updategrid(m_line *node, int fd);

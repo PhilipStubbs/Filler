@@ -18,6 +18,14 @@ static int		bmforking(m_line *node, int cx, int cy)
 				return (1);
 		}
 	}
+
+	// if (node->grid->sizey == 15)
+	// {
+	// 	node->heatmap[cy++][cx] = 20;
+	// 	// node->heatmap[cy][cx -1] = 8;
+	// 	if (cy == node->grid->sizey || cx == 0)
+	// 		return (1);
+	// }
 	while (1)
 	{
 		node->heatmap[cy--][cx] = 5;
