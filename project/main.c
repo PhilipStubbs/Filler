@@ -81,6 +81,7 @@ int	main()
 	int fd;
 
 	fd = 0;
+	// fd = open("output01.txt", O_RDONLY);
 	node = NULL;
 	node = malloctime(node);
 	node->grid = mallocgline();
@@ -97,8 +98,8 @@ int	main()
 		if (node->playable == 0)
 		{
 			ft_putendl_fd("EXIT", 2);
-			printnodenbr(node);
-			printtokenhold(node);
+			// printnodenbr(node);
+			// printtokenhold(node);
 			return (0);
 		}
 		getinfo(node,fd);

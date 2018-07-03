@@ -71,8 +71,9 @@ int	*findfirststar(m_line *node)
 		}
 		y++;
 	}
-	if (y == node->token->sizey)
-		ret[1] = 0;
+
+	// if (y == node->token->sizey)
+	// 	ret[1] = 0;
 	return (ret);
 }
 

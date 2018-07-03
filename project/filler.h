@@ -14,6 +14,7 @@
 # define FILLER_H
 # define BOT_NAME "philler"
 # include "libft/libft.h"
+#include <stdio.h>
 
 typedef	struct		u_line
 {
