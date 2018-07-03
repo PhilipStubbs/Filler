@@ -14,7 +14,6 @@
 # define FILLER_H
 # define BOT_NAME "philler"
 # include "libft/libft.h"
-#include <stdio.h>
 
 typedef	struct		u_line
 {
@@ -33,7 +32,6 @@ typedef	struct		i_line
 	int				playable;
 	g_line			*token;
 	g_line			*grid;
-
 }					m_line;
 
 int					lineplayerone(m_line *node, int myy, int myx, char **txy);
@@ -41,7 +39,7 @@ int					lineplayertwo(m_line *node, int myy, int myx, char **txy);
 int					forkingplayerone(m_line *node, int cx, int cy);
 int					forkingplayertwo(m_line *node, int cx, int cy);
 int					enemparm(m_line *node, int l, int i);
-int					validpos(m_line *node, int y, int x, int *xyneg);
+int					validpos(m_line *node, int y, int x);
 char				*findplayer(m_line *node, int fd);
 char				*findstart(m_line *node, char c);
 int					updategrid(m_line *node, int fd);
@@ -50,11 +48,8 @@ int					findgrid(m_line *node, int fd);
 int					getinfo(m_line *node, int fd);
 char				**ft_split(char *str, char c);
 int					tokenplacement(m_line *node);
+void				resetheatmap(m_line *node);
 int					linetoenem(m_line *node);
 int					swallow(m_line *node);
 int					skipline(int fd);
-
-
-
 #endif
-

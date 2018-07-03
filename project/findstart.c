@@ -17,22 +17,24 @@ char	*findstart(m_line *node, char c)
 	int		x;
 	int		y;
 	char	*ret;
+	char	**hold;
 
 	x = 0;
+	hold = node->grid->mdhold;
 	while (x < node->grid->sizex)
 	{
 		y = 0;
 		while (y < node->grid->sizey)
 		{
-			if(node->grid->mdhold[y][x] == c || node->grid->mdhold[y][x] == c - 32)
+			if (hold[y][x] == c || hold[y][x] == c - 32)
 			{
 				ret = ft_strjoin(ft_itoa(x++), " ");
 				ft_strcat(ret, ft_itoa(y++));
-				return(ret) ;
+				return (ret);
 			}
 			y++;
 		}
 		x++;
 	}
-	return (NULL);	
+	return (NULL);
 }

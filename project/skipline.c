@@ -14,15 +14,15 @@
 
 int		skipline(int fd)
 {
-	int	i;
-	char *buff;
+	int		i;
+	char	*buff;
 
 	buff = (char*)malloc(1 + 1);
-	while ((i = read(fd , buff, 1)) > 0)
+	while ((i = read(fd, buff, 1)) > 0)
 	{
 		if (ft_strchr(buff, '\n'))
 		{
-			break;
+			break ;
 		}
 	}
 	ft_bzero(buff, 2);

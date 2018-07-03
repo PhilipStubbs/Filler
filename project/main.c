@@ -1,17 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pstubbs <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/03 09:24:16 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/07/03 09:24:17 by pstubbs          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
-#include <stdio.h>
 	
 m_line	*malloctime(m_line *node)
 {
 	node = (m_line*)malloc(sizeof(m_line));
-	// node->grid = (g_line*)malloc(sizeof(g_line));
-	// node->token = (g_line*)malloc(sizeof(g_line));
-	// node->token->mdhold = (char**)malloc(sizeof(char*));
 	node->heatmapcreat = 0;
-	// node->grid->sizex = 0;
-	// node->grid->sizey = 0;
 	node->playable = 1;
-
 	return (node);
 }
 
@@ -25,16 +30,6 @@ g_line	*mallocgline()
 	ret->sizey = 0;
 	return (ret);
 }
-
-
-// void	printnode(char **str)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while(i < )
-// 		ft_putendl_fd(str[i++], 2);
-// }
 
 void	printnodenbr(m_line *node)
 {
@@ -78,34 +73,11 @@ void	printtokenhold(m_line *node)
 	ft_putchar_fd(']', 2);
 }
 
-void	printgridhold(m_line *node)
-{
-	int i;
-	int	l;
-
-	i = 0;
-	l = 0;
-	ft_putchar_fd('[', 2);
-	while(l < node->grid->sizey)
-	{
-		i = 0;
-		while(i < node->grid->sizex)
-		{
-			ft_putchar_fd(node->grid->mdhold[l][i], 2);
-			i++;
-		}
-		ft_putchar_fd('\n', 2);
-		l++;
-	}
-	ft_putchar_fd(']', 2);
-}
-
 int	main()
 {
 	m_line *node;
 	int fd;
 
-	// fd = open("output01.txt", O_RDONLY);
 	fd = 0;
 	node = NULL;
 	node = malloctime(node);
@@ -114,31 +86,19 @@ int	main()
 	findplayer(node, fd);
 	findgrid(node, fd);
 	findtoken(node, fd);
-	// getinfo(node,fd);
-
-	// printnode(node->token->mdhold);
-	// node->playable = 0
 	while(node->playable)
 	{
-		
 		swallow(node);
-		// printgridhold(node);
 		// printnodenbr(node);
 		// printtokenhold(node);
-
 		tokenplacement(node);
-
-		// ft_putendl_fd("tokenplacement", 2);
-		// node->playable = 0;
-
 		if (node->playable == 0)
 		{
 			ft_putendl_fd("EXIT", 2);
+			printtokenhold(node);
 			return (0);
 		}
 		getinfo(node,fd);
-		// ft_putendl_fd("getinfo", 2);
-		
 	}
 	return(0);
 }

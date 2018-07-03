@@ -12,16 +12,15 @@
 
 #include "filler.h"
 
-void	ft_strpull(int w,char **ret, char *str, char c)
+void	ft_strpull(int w, char **ret, char *str, char c)
 {
-	int		i;
-	int 	len;
+	int	i;
+	int	len;
 
 	len = 0;
 	i = 0;
 	while (str[len] && str[len] != c)
 		len++;
-
 	ret[w] = (char*)malloc(len + 1);
 	while (i <= len)
 	{
@@ -36,7 +35,7 @@ char	**ft_split(char *str, char c)
 {
 	int		words;
 	char	**ret;
-	int 	i;
+	int		i;
 
 	words = ft_strcount(str, c);
 	ret = (char**)malloc(sizeof(*ret) * words + 1);

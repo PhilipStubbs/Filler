@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tokenplacement.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pstubbs <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/03 09:25:30 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/07/03 09:25:31 by pstubbs          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "filler.h"
 
@@ -29,11 +40,8 @@ void placementoutput(int y, int x)
 	
 	ret = ft_strjoin(ft_itoa(y), " ");
 	ft_strcat(ret, ft_itoa(x));
-	
-	// ft_putendl_fd(ret, 2);
 	ft_putendl_fd(ret, 1);
 	free(ret);
-
 }
 
 int	*findfirststar(m_line *node)
@@ -43,7 +51,6 @@ int	*findfirststar(m_line *node)
 	int	*ret;
 
 	y = 0;
-
 	ret = (int*)ft_memalloc(sizeof(int) *2);
 	ret[1] = node->token->sizey;
 	ret[0] = node->token->sizex;
@@ -66,7 +73,6 @@ int	*findfirststar(m_line *node)
 	}
 	if (y == node->token->sizey)
 		ret[1] = 0;
-	
 	return (ret);
 }
 
@@ -80,19 +86,16 @@ int	tokenplacement(m_line *node)
 	int	tempscore;
 	int	*xyneg;
 
-	
 	xyneg = findfirststar(node);
 	y = 0 - xyneg[1];
 	score = 0;
-	tempy = 0;
-	tempx = 0;
 	tempscore = 0;
 	while (y < node->grid->sizey)
 	{
 		x = 0 - xyneg[0];
 		while (x < node->grid->sizex)
 		{
-			if(validpos(node, y, x, xyneg) == 1)
+			if(validpos(node, y, x) == 1)
 			{
 				tempscore = scorecount(node, y, x);
 				if (tempscore > score)
@@ -119,51 +122,3 @@ int	tokenplacement(m_line *node)
 	}
 	return (1);
 }
-
-// int	tokenplacement(m_line *node)
-// {
-// 	int	x;
-// 	int	y;
-// 	int	tempx;
-// 	int	tempy;
-// 	int	score;
-// 	int	tempscore;
-
-// 	y = 0;
-// 	score = 0;
-// 	tempy = 0;
-// 	tempx = 0;
-// 	tempscore = 0;
-// 	while (y < node->grid->sizey)
-// 	{
-// 		x = 0;
-// 		while (x < node->grid->sizex)
-// 		{
-// 			if(validpos(node, y, x) == 1)
-// 			{
-// 				// ft_putendl_fd("Validpos found", 2);
-// 				tempscore = scorecount(node, y, x);
-// 				if (tempscore > score)
-// 				{
-// 					score = tempscore;
-// 					tempx = x;
-// 					tempy = y;
-// 				}
-// 			}
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	if (tempscore > 0)
-// 	{
-// 		node->playable = 1;
-// 		placementoutput(tempy, tempx);
-// 	}
-// 	else if (tempscore == 0)
-// 	{
-// 		node->playable = 0;
-// 		placementoutput(0, 0);
-
-// 	}
-// 	return (1);
-// }
