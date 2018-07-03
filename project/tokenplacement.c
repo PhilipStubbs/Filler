@@ -76,49 +76,58 @@ int	*findfirststar(m_line *node)
 	return (ret);
 }
 
+int	cleannode(m_line *node)
+{
+	node->grid->tempy = 0;
+	node->grid->tempx = 0;
+	node->token->tempy = 0;
+	node->token->tempx = 0;
+	return (1);
+}
+
+int	positioncheck(m_line *node, int y, int x, int score)
+{
+	int tempscore;
+
+	tempscore = 0;
+	if(validpos(node, y, x) == 1)
+	{
+		tempscore = scorecount(node, y, x);
+		if (tempscore > score)
+		{
+			score = tempscore;
+			node->grid->tempy = y;
+			node->grid->tempx = x;
+		}
+	}
+	return (score);
+}
+
 int	tokenplacement(m_line *node)
 {
 	int	x;
 	int	y;
-	int	tempx;
-	int	tempy;
 	int	score;
-	int	tempscore;
 	int	*xyneg;
 
+	cleannode(node);
 	xyneg = findfirststar(node);
 	y = 0 - xyneg[1];
 	score = 0;
-	tempscore = 0;
 	while (y < node->grid->sizey)
 	{
 		x = 0 - xyneg[0];
 		while (x < node->grid->sizex)
 		{
-			if(validpos(node, y, x) == 1)
-			{
-				tempscore = scorecount(node, y, x);
-				if (tempscore > score)
-				{
-					score = tempscore;
-					tempx = x;
-					tempy = y;
-				}
-			}
+			score = positioncheck(node, y, x, score);
 			x++;
 		}
 		y++;
 	}
-	if (tempscore > 0)
-	{
+	if (score > 0)
 		node->playable = 1;
-		placementoutput(tempy, tempx);
-	}
-	else if (tempscore == 0)
-	{
+	else
 		node->playable = 0;
-		placementoutput(0, 0);
-
-	}
+	placementoutput(node->grid->tempy, node->grid->tempx);
 	return (1);
 }

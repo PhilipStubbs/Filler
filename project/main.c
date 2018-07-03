@@ -28,6 +28,8 @@ g_line	*mallocgline()
 	ret->mdhold = (char**)malloc(sizeof(char*) * 5);;
 	ret->sizex = 0;
 	ret->sizey = 0;
+	ret->tempx = 0;
+	ret->tempy = 0;
 	return (ret);
 }
 
@@ -95,6 +97,7 @@ int	main()
 		if (node->playable == 0)
 		{
 			ft_putendl_fd("EXIT", 2);
+			printnodenbr(node);
 			printtokenhold(node);
 			return (0);
 		}

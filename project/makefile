@@ -18,6 +18,7 @@ SRC = findgrid.c \
 	enemparm.c \
 	tokenplacement.c \
 	getinfo.c \
+	resetheatmap.c \
 	main.c \
 
 

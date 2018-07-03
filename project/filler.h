@@ -20,6 +20,8 @@ typedef	struct		u_line
 	char			**mdhold;
 	int				sizex;
 	int				sizey;
+	int				tempy;
+	int				tempx;
 }					g_line;
 
 typedef	struct		i_line
