@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-int		intogrid(m_line *node, char *line, int l)
+int		intogrid(t_fill *node, char *line, int l)
 {
 	char	**splitstr;
 	int		i;
@@ -27,7 +27,7 @@ int		intogrid(m_line *node, char *line, int l)
 	return (1);
 }
 
-int		updategrid(m_line *node, int fd)
+int		updategrid(t_fill *node, int fd)
 {
 	int		i;
 	char	*line;

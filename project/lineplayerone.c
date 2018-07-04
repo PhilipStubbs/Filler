@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-int		smplayerone(m_line *node, int myy, int myx, char **txy)
+int		smplayerone(t_fill *node, int myy, int myx, char **txy)
 {
 	int	count;
 	int	temp;
@@ -37,7 +37,7 @@ int		smplayerone(m_line *node, int myy, int myx, char **txy)
 	return (1);
 }
 
-int		mmplayerone(m_line *node, int myy, int myx, char **txy)
+int		mmplayerone(t_fill *node, int myy, int myx, char **txy)
 {
 	int count;
 	int	temp;
@@ -61,7 +61,7 @@ int		mmplayerone(m_line *node, int myy, int myx, char **txy)
 	return (1);
 }
 
-int		lmplayerone(m_line *node, int myy, int myx, char **txy)
+int		lmplayerone(t_fill *node, int myy, int myx, char **txy)
 {
 	int count;
 	int	temp;
@@ -81,7 +81,7 @@ int		lmplayerone(m_line *node, int myy, int myx, char **txy)
 	return (1);
 }
 
-int		lineplayerone(m_line *node, int myy, int myx, char **txy)
+int		lineplayerone(t_fill *node, int myy, int myx, char **txy)
 {
 	if (node->grid->sizey == 15)
 		smplayerone(node, myy, myx, txy);

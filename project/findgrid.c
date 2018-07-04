@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-int		findsize(char *line, m_line *node, int fd)
+int		findsize(char *line, t_fill *node, int fd)
 {
 	char	**splitline;
 	int		*y;
@@ -32,7 +32,7 @@ int		findsize(char *line, m_line *node, int fd)
 	return (1);
 }
 
-void	catintonode(char *line, m_line *node, int i)
+void	catintonode(char *line, t_fill *node, int i)
 {
 	char	**splitline;
 	int		*x;
@@ -44,7 +44,7 @@ void	catintonode(char *line, m_line *node, int i)
 	ft_strcat(node->grid->mdhold[i], splitline[1]);
 }
 
-int		findgrid(m_line *node, int fd)
+int		findgrid(t_fill *node, int fd)
 {
 	char	*line;
 	int		i;

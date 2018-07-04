@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-char	*findstart(m_line *node, char c)
+char	*findstart(t_fill *node, char c)
 {
 	int		x;
 	int		y;

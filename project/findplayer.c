@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-char	*findplayer(m_line *node, int fd)
+char	*findplayer(t_fill *node, int fd)
 {
 	char	*line;
 

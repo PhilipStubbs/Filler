@@ -19,6 +19,9 @@ SRC = findgrid.c \
 	tokenplacement.c \
 	getinfo.c \
 	resetheatmap.c \
+	placementoutput.c \
+	scorecount.c \
+	xchecks.c \
 	main.c \
 
 

@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-int		intotoken(m_line *node, char *line, int l)
+int		intotoken(t_fill *node, char *line, int l)
 {
 	int	x;
 
@@ -22,7 +22,7 @@ int		intotoken(m_line *node, char *line, int l)
 	return (1);
 }
 
-int		findtoken(m_line *node, int fd)
+int		findtoken(t_fill *node, int fd)
 {
 	char	*line;
 	char	**splitline;

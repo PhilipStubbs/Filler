@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-static int		bmforking(m_line *node, int cx, int cy)
+static int		bmforking(t_fill *node, int cx, int cy)
 {
 	if (node->grid->sizey == 100)
 	{
@@ -37,7 +37,7 @@ static int		bmforking(m_line *node, int cx, int cy)
 	return (1);
 }
 
-static void		smextrafork(m_line *node, int x, int y)
+static void		smextrafork(t_fill *node, int x, int y)
 {
 	int cy;
 
@@ -51,7 +51,7 @@ static void		smextrafork(m_line *node, int x, int y)
 	}
 }
 
-int				forkingplayerone(m_line *node, int cx, int cy)
+int				forkingplayerone(t_fill *node, int cx, int cy)
 {
 	int	x;
 	int	y;
@@ -66,7 +66,7 @@ int				forkingplayerone(m_line *node, int cx, int cy)
 	{
 		while (1)
 		{
-			if(node->grid->sizey == 100)
+			if (node->grid->sizey == 100)
 				v = 15;
 			node->heatmap[cy][x++] = v;
 			if (x == node->grid->sizex)

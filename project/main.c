@@ -11,21 +11,21 @@
 /* ************************************************************************** */
 
 #include "filler.h"
-	
-m_line	*malloctime(m_line *node)
+
+t_fill	*malloctime(t_fill *node)
 {
-	node = (m_line*)malloc(sizeof(m_line));
+	node = (t_fill*)malloc(sizeof(t_fill));
 	node->heatmapcreat = 0;
 	node->playable = 1;
 	return (node);
 }
 
-g_line	*mallocgline()
+t_grid	*mallocgline(void)
 {
-	g_line *ret;
+	t_grid *ret;
 
-	ret = (g_line*)malloc(sizeof(g_line));
-	ret->mdhold = (char**)malloc(sizeof(char*) * 5);;
+	ret = (t_grid*)malloc(sizeof(t_grid));
+	ret->mdhold = (char**)malloc(sizeof(char*) * 5);
 	ret->sizex = 0;
 	ret->sizey = 0;
 	ret->tempx = 0;
@@ -33,17 +33,17 @@ g_line	*mallocgline()
 	return (ret);
 }
 
-void	printnodenbr(m_line *node)
+void	printnodenbr(t_fill *node)
 {
 	int i;
 	int	l;
 
 	i = 0;
 	l = 0;
-	while(l < node->grid->sizey)
+	while (l < node->grid->sizey)
 	{
 		i = 0;
-		while(i < node->grid->sizex)
+		while (i < node->grid->sizex)
 		{
 			ft_putnbr_fd(node->heatmap[l][i], 2);
 			i++;
@@ -52,8 +52,8 @@ void	printnodenbr(m_line *node)
 		l++;
 	}
 }
-	
-void	printtokenhold(m_line *node)
+
+void	printtokenhold(t_fill *node)
 {
 	int i;
 	int	l;
@@ -61,10 +61,10 @@ void	printtokenhold(m_line *node)
 	i = 0;
 	l = 0;
 	ft_putchar_fd('[', 2);
-	while(l < node->token->sizey)
+	while (l < node->token->sizey)
 	{
 		i = 0;
-		while(i < node->token->sizex)
+		while (i < node->token->sizex)
 		{
 			ft_putchar_fd(node->token->mdhold[l][i], 2);
 			i++;
@@ -75,13 +75,12 @@ void	printtokenhold(m_line *node)
 	ft_putchar_fd(']', 2);
 }
 
-int	main()
+int		main(void)
 {
-	m_line *node;
-	int fd;
+	t_fill	*node;
+	int		fd;
 
 	fd = 0;
-	// fd = open("output01.txt", O_RDONLY);
 	node = NULL;
 	node = malloctime(node);
 	node->grid = mallocgline();
@@ -89,20 +88,16 @@ int	main()
 	findplayer(node, fd);
 	findgrid(node, fd);
 	findtoken(node, fd);
-	while(node->playable)
+	while (node->playable)
 	{
 		swallow(node);
-		// printnodenbr(node);
-		// printtokenhold(node);
 		tokenplacement(node);
 		if (node->playable == 0)
 		{
 			ft_putendl_fd("EXIT", 2);
-			// printnodenbr(node);
-			// printtokenhold(node);
 			return (0);
 		}
-		getinfo(node,fd);
+		getinfo(node, fd);
 	}
-	return(0);
+	return (0);
 }

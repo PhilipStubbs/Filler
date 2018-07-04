@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-int		linetoenem(m_line *node)
+int		linetoenem(t_fill *node)
 {
 	int		myx;
 	int		myy;

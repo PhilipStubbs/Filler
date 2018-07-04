@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-void	resetheatmap(m_line *node)
+void	resetheatmap(t_fill *node)
 {
 	int	i;
 	int	l;

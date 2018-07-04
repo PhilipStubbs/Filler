@@ -14,18 +14,17 @@
 # define FILLER_H
 # define BOT_NAME "philler"
 # include "libft/libft.h"
-#include <stdio.h>
 
-typedef	struct		u_line
+typedef	struct		s_grid
 {
 	char			**mdhold;
 	int				sizex;
 	int				sizey;
 	int				tempy;
 	int				tempx;
-}					g_line;
+}					t_grid;
 
-typedef	struct		i_line
+typedef	struct		s_fill
 {
 	int				player;
 	int				**heatmap;
@@ -33,26 +32,31 @@ typedef	struct		i_line
 	char			piece;
 	char			enem;
 	int				playable;
-	g_line			*token;
-	g_line			*grid;
-}					m_line;
+	t_grid			*token;
+	t_grid			*grid;
+}					t_fill;
 
-int					lineplayerone(m_line *node, int myy, int myx, char **txy);
-int					lineplayertwo(m_line *node, int myy, int myx, char **txy);
-int					forkingplayerone(m_line *node, int cx, int cy);
-int					forkingplayertwo(m_line *node, int cx, int cy);
-int					enemparm(m_line *node, int l, int i);
-int					validpos(m_line *node, int y, int x);
-char				*findplayer(m_line *node, int fd);
-char				*findstart(m_line *node, char c);
-int					updategrid(m_line *node, int fd);
-int					findtoken(m_line *node, int fd);
-int					findgrid(m_line *node, int fd);
-int					getinfo(m_line *node, int fd);
+int					lineplayerone(t_fill *node, int myy, int myx, char **txy);
+int					lineplayertwo(t_fill *node, int myy, int myx, char **txy);
+int					forkingplayerone(t_fill *node, int cx, int cy);
+int					forkingplayertwo(t_fill *node, int cx, int cy);
+int					xcheckenem (t_fill *node, int l, int i);
+int					scorecount(t_fill *node, int y, int x);
+int					xcheckstar(t_fill *node, int l, int i);
+int					xcheckomp(t_fill *node, int l, int i);
+int					enemparm(t_fill *node, int l, int i);
+int					validpos(t_fill *node, int y, int x);
+char				*findplayer(t_fill *node, int fd);
+char				*findstart(t_fill *node, char c);
+int					updategrid(t_fill *node, int fd);
+int					findtoken(t_fill *node, int fd);
+int					findgrid(t_fill *node, int fd);
+void				placementoutput(int y, int x);
+int					getinfo(t_fill *node, int fd);
 char				**ft_split(char *str, char c);
-int					tokenplacement(m_line *node);
-void				resetheatmap(m_line *node);
-int					linetoenem(m_line *node);
-int					swallow(m_line *node);
+int					tokenplacement(t_fill *node);
+void				resetheatmap(t_fill *node);
+int					linetoenem(t_fill *node);
+int					swallow(t_fill *node);
 int					skipline(int fd);
 #endif

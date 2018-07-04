@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-int	loopnegx(m_line *node, int x, int y, int count)
+int	loopnegx(t_fill *node, int x, int y, int count)
 {
 	int	**hm;
 
@@ -35,7 +35,7 @@ int	loopnegx(m_line *node, int x, int y, int count)
 	return (1);
 }
 
-int	loopposx(m_line *node, int x, int y, int count)
+int	loopposx(t_fill *node, int x, int y, int count)
 {
 	int	**hm;
 
@@ -58,7 +58,7 @@ int	loopposx(m_line *node, int x, int y, int count)
 	return (1);
 }
 
-int	loopnegy(m_line *node, int x, int y, int count)
+int	loopnegy(t_fill *node, int x, int y, int count)
 {
 	int	**hm;
 
@@ -81,7 +81,7 @@ int	loopnegy(m_line *node, int x, int y, int count)
 	return (1);
 }
 
-int	loopposy(m_line *node, int x, int y, int count)
+int	loopposy(t_fill *node, int x, int y, int count)
 {
 	int	**hm;
 
@@ -104,7 +104,7 @@ int	loopposy(m_line *node, int x, int y, int count)
 	return (1);
 }
 
-int	enemparm(m_line *node, int l, int i)
+int	enemparm(t_fill *node, int l, int i)
 {
 	int	count;
 
