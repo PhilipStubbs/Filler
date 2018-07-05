@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linetoenem.c                                       :+:      :+:    :+:   */
+/*   findplayer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/03 09:25:20 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/03 09:25:21 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/06/15 12:31:56 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/06/15 12:31:57 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		linetoenem(t_fill *node)
+char	*findplayer(t_phill *node, int fd)
 {
-	int		myx;
-	int		myy;
-	char	**myxy;
-	char	**txy;
+	char	*line;
 
-	myxy = ft_split(findstart(node, node->piece), ' ');
-	txy = ft_split(findstart(node, node->enem), ' ');
-	myx = ft_atoi(myxy[0]);
-	myy = ft_atoi(myxy[1]);
-	if (node->player == 1)
-		lineplayerone(node, myy, myx, txy);
-	else if (node->player == 2)
-		lineplayertwo(node, myy, myx, myxy);
-	return (1);
+	get_next_line(fd, &line);
+	while (strstr(line, "exec") == NULL)
+		get_next_line(fd, &line);
+	if (ft_strstr(line, "p1"))
+	{
+		node->player = 1;
+		node->piece = 'o';
+		node->enem = 'x';
+	}
+	else
+	{
+		node->player = 2;
+		node->piece = 'x';
+		node->enem = 'o';
+	}
+	return (BOT_NAME);
 }

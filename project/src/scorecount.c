@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   findplayer.c                                       :+:      :+:    :+:   */
+/*   scorecount.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/15 12:31:56 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/06/15 12:31:57 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/07/04 12:07:38 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/07/04 12:07:39 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-char	*findplayer(t_fill *node, int fd)
+int		scorecount(t_phill *node, int y, int x)
 {
-	char	*line;
+	int	i;
+	int	l;
+	int score;
 
-	get_next_line(fd, &line);
-	while (strstr(line, "exec") == NULL)
-		get_next_line(fd, &line);
-	if (ft_strstr(line, "p1"))
+	score = 0;
+	l = 0;
+	while (l < node->token->sizey)
 	{
-		node->player = 1;
-		node->piece = 'o';
-		node->enem = 'x';
+		i = 0;
+		while (i < node->token->sizex)
+		{
+			if (node->token->mdhold[l][i] == '*')
+				score += node->heatmap[y + l][x + i];
+			i++;
+		}
+		l++;
 	}
-	else
-	{
-		node->player = 2;
-		node->piece = 'x';
-		node->enem = 'o';
-	}
-	return (BOT_NAME);
+	return (score);
 }

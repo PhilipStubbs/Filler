@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-int		setplayerpieces(t_fill *node, char c, int repval)
+int		setplayerpieces(t_phill *node, char c, int repval)
 {
 	int		i;
 	int		l;
@@ -36,7 +36,7 @@ int		setplayerpieces(t_fill *node, char c, int repval)
 	return (1);
 }
 
-int		findwho(t_fill *node)
+int		findwho(t_phill *node)
 {
 	int		repval;
 
@@ -47,7 +47,7 @@ int		findwho(t_fill *node)
 	return (1);
 }
 
-void	createmem(t_fill *node)
+void	createmem(t_phill *node)
 {
 	int l;
 
@@ -64,7 +64,7 @@ void	createmem(t_fill *node)
 	linetoenem(node);
 }
 
-int		findenem(t_fill *node)
+int		findenem(t_phill *node)
 {
 	int	i;
 	int	l;
@@ -86,7 +86,7 @@ int		findenem(t_fill *node)
 	return (1);
 }
 
-int		swallow(t_fill *node)
+int		swallow(t_phill *node)
 {
 	if (node->heatmapcreat == 0)
 	{

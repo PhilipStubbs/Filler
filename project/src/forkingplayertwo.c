@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-static int		bmforking(t_fill *node, int cx, int cy)
+static int		bmforking(t_phill *node, int cx, int cy)
 {
 	if (node->grid->sizey == 100)
 	{
@@ -37,7 +37,7 @@ static int		bmforking(t_fill *node, int cx, int cy)
 	return (1);
 }
 
-int				forkingplayertwo(t_fill *node, int cx, int cy)
+int				forkingplayertwo(t_phill *node, int cx, int cy)
 {
 	int	x;
 	int	y;

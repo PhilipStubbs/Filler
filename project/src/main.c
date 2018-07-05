@@ -12,9 +12,9 @@
 
 #include "filler.h"
 
-t_fill	*malloctime(t_fill *node)
+t_phill	*malloctime(t_phill *node)
 {
-	node = (t_fill*)malloc(sizeof(t_fill));
+	node = (t_phill*)malloc(sizeof(t_phill));
 	node->heatmapcreat = 0;
 	node->playable = 1;
 	return (node);
@@ -33,7 +33,7 @@ t_grid	*mallocgline(void)
 	return (ret);
 }
 
-void	printnodenbr(t_fill *node)
+void	printnodenbr(t_phill *node)
 {
 	int i;
 	int	l;
@@ -53,7 +53,7 @@ void	printnodenbr(t_fill *node)
 	}
 }
 
-void	printtokenhold(t_fill *node)
+void	printtokenhold(t_phill *node)
 {
 	int i;
 	int	l;
@@ -77,7 +77,7 @@ void	printtokenhold(t_fill *node)
 
 int		main(void)
 {
-	t_fill	*node;
+	t_phill	*node;
 	int		fd;
 
 	fd = 0;

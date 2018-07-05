@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-int		*intarryset(t_fill *node)
+int		*intarryset(t_phill *node)
 {
 	int	*ret;
 
@@ -22,7 +22,7 @@ int		*intarryset(t_fill *node)
 	return (ret);
 }
 
-int		*findfirststar(t_fill *node)
+int		*findfirststar(t_phill *node)
 {
 	int	x;
 	int	y;
@@ -50,7 +50,7 @@ int		*findfirststar(t_fill *node)
 	return (ret);
 }
 
-int		cleannode(t_fill *node)
+int		cleannode(t_phill *node)
 {
 	node->grid->tempy = 0;
 	node->grid->tempx = 0;
@@ -59,7 +59,7 @@ int		cleannode(t_fill *node)
 	return (1);
 }
 
-int		positioncheck(t_fill *node, int y, int x, int score)
+int		positioncheck(t_phill *node, int y, int x, int score)
 {
 	int tempscore;
 
@@ -77,7 +77,7 @@ int		positioncheck(t_fill *node, int y, int x, int score)
 	return (score);
 }
 
-int		tokenplacement(t_fill *node)
+int		tokenplacement(t_phill *node)
 {
 	int	x;
 	int	y;

@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-static int		bmforking(t_fill *node, int cx, int cy)
+static int		bmforking(t_phill *node, int cx, int cy)
 {
 	if (node->grid->sizey == 100)
 	{
@@ -37,7 +37,7 @@ static int		bmforking(t_fill *node, int cx, int cy)
 	return (1);
 }
 
-static void		smextrafork(t_fill *node, int x, int y)
+static void		smextrafork(t_phill *node, int x, int y)
 {
 	int cy;
 
@@ -51,7 +51,7 @@ static void		smextrafork(t_fill *node, int x, int y)
 	}
 }
 
-int				forkingplayerone(t_fill *node, int cx, int cy)
+int				forkingplayerone(t_phill *node, int cx, int cy)
 {
 	int	x;
 	int	y;

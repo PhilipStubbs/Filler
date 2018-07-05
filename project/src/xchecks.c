@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-int	xcheckstar(t_fill *node, int l, int i)
+int	xcheckstar(t_phill *node, int l, int i)
 {
 	int	count;
 	int	x;
@@ -27,7 +27,7 @@ int	xcheckstar(t_fill *node, int l, int i)
 	return (count);
 }
 
-int	xcheckomp(t_fill *node, int l, int i)
+int	xcheckomp(t_phill *node, int l, int i)
 {
 	int		omp;
 	int		x;
@@ -45,7 +45,7 @@ int	xcheckomp(t_fill *node, int l, int i)
 	return (omp);
 }
 
-int	xcheckenem(t_fill *node, int l, int i)
+int	xcheckenem(t_phill *node, int l, int i)
 {
 	int		x;
 	int		y;

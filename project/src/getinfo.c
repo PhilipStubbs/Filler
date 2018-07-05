@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-void		intog(t_fill *node, char *line, int l)
+void		intog(t_phill *node, char *line, int l)
 {
 	char	**splitstr;
 	int		i;
@@ -26,7 +26,7 @@ void		intog(t_fill *node, char *line, int l)
 	}
 }
 
-void		updateg(t_fill *node, char *line, int fd)
+void		updateg(t_phill *node, char *line, int fd)
 {
 	int		i;
 
@@ -47,14 +47,14 @@ void		updateg(t_fill *node, char *line, int fd)
 	free(line);
 }
 
-void		intoto(t_fill *node, char *line, int l)
+void		intoto(t_phill *node, char *line, int l)
 {
 	node->token->mdhold[l] = (char*)ft_memalloc(sizeof(char) *
 		node->token->sizex + 1);
 	ft_memcpy(node->token->mdhold[l], line, node->token->sizex);
 }
 
-void		findto(t_fill *node, char *line, int fd)
+void		findto(t_phill *node, char *line, int fd)
 {
 	char	**splitline;
 	int		i;
@@ -81,7 +81,7 @@ void		findto(t_fill *node, char *line, int fd)
 	}
 }
 
-int			getinfo(t_fill *node, int fd)
+int			getinfo(t_phill *node, int fd)
 {
 	char *line;
 

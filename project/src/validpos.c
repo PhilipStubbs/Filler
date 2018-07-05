@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-int		countstars(t_fill *node)
+int		countstars(t_phill *node)
 {
 	int	i;
 	int	l;
@@ -37,7 +37,7 @@ int		countstars(t_fill *node)
 	return (count);
 }
 
-int		returnval(t_fill *node, int omp, int count)
+int		returnval(t_phill *node, int omp, int count)
 {
 	int	stars;
 
@@ -47,14 +47,14 @@ int		returnval(t_fill *node, int omp, int count)
 	return (1);
 }
 
-int		settempxy(t_fill *node, int y, int x)
+int		settempxy(t_phill *node, int y, int x)
 {
 	node->token->tempy = y;
 	node->token->tempx = x;
 	return (0);
 }
 
-int		validpos(t_fill *node, int y, int x)
+int		validpos(t_phill *node, int y, int x)
 {
 	int	i;
 	int	l;
