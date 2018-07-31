@@ -23,6 +23,7 @@ SRC = src/findgrid.c \
 	src/scorecount.c \
 	src/xchecks.c \
 	src/main.c \
+	src/visualizer.c \
 
 
 OBJ = *.o
@@ -30,9 +31,9 @@ OBJ = *.o
 all: $(NAME)
 
 $(NAME):
-	make re -C libft/
-	gcc -c -Wall -Werror -Wextra $(SRC)
-	gcc -o $(NAME) $(OBJ) -I. -L. libft/libft.a
+	make -C libft/
+	gcc -c -Wall -Werror -Wextra $(SRC) 
+	gcc -o $(NAME) $(OBJ) -lncurses -I. -L. libft/libft.a
 	rm -f $(OBJ)
 
 clean:

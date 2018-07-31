@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pstubbs <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 12:07:02 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/06/15 12:07:04 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/31 09:49:50 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FILLER_H
 # define BOT_NAME "philler"
 # include "../libft/libft.h"
+# include <curses.h>
 
 typedef	struct		s_grid
 {
@@ -59,4 +60,7 @@ void				resetheatmap(t_phill *node);
 int					linetoenem(t_phill *node);
 int					swallow(t_phill *node);
 int					skipline(int fd);
+
+void				curvisualizer(t_phill *node);
+void				asvisualizer(t_phill *node);
 #endif
