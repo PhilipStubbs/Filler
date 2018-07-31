@@ -6,49 +6,79 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/31 09:15:24 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/31 10:08:15 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/31 15:14:43 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 #include <curses.h>
 
-// void	curvisualizer(t_phill *node)
-// {
-// 	initscr();
-// 	noecho();
-// 	// curs_set(FALSE);
-// 	// mvprintw(1, 1 , "HELLO");
-// 	// sleep(1);
 
-// 	if (node->playable == 0)
-// 	{
-// 		// return;
-// 		endwin();
-// 	}
-// }
-
-void	asvisualizer(t_phill *node)
+void	printnodenbrbody(t_phill *node, int	i, int l)
 {
-	int		i;
-	int		l;
-	char 	c;
+	if (node->heatmap[l][i] == 2)
+		ft_putstr_fd("\x1B[34m⬛\x1B[0m", 2);
+	else if (node->heatmap[l][i] == 0)
+		ft_putstr_fd("\x1B[30m⬛\x1B[0m", 2);
+	else if (node->heatmap[l][i] >= 8)
+		ft_putstr_fd("\x1B[31m⬛\x1B[0m", 2);
+	else if (node->heatmap[l][i] == 7)
+		ft_putstr_fd("\x1B[35m⬛\x1B[0m", 2);
+	else if (node->heatmap[l][i] == 6)
+		ft_putstr_fd("\x1B[33m⬛\x1B[0m", 2);
+	else if (node->heatmap[l][i] <= 5 && node->heatmap[l][i] >= 3)
+		ft_putstr_fd("\x1B[32m⬛\x1B[0m", 2);
+	else if (node->heatmap[l][i] == 1)
+		ft_putstr_fd("\x1B[37m⬜\x1B[0m", 2);
+}
+
+void	printnodenbr(t_phill *node)
+{
+	int i;
+	int	l;
 
 	i = 0;
 	l = 0;
-	c = (char)254;
 	while (l < node->grid->sizey)
 	{
 		i = 0;
 		while (i < node->grid->sizex)
 		{
-			// ft_putchar_fd(node->grid->mdhold[l][i], 2);
-			ft_putstr_fd("█", 2);
+			printnodenbrbody(node, i, l);
 			i++;
 		}
 		ft_putchar_fd('\n', 2);
 		l++;
 	}
-	usleep(50000);
+	usleep(55000);
+	ft_putchar_fd('\n', 2);
+}
+
+void	asvisualizer(t_phill *node)
+{
+	int		i;
+	int		l;
+	
+	i = 0;
+	l = 0;
+	while (l < node->grid->sizey)
+	{
+		i = 0;
+		while (i < node->grid->sizex)
+		{
+			if (node->grid->mdhold[l][i] == node->piece ||
+			node->grid->mdhold[l][i] == node->piece - 32)
+				ft_putstr_fd("\x1B[34m⬛\x1B[0m", 2);
+			else if (node->grid->mdhold[l][i] == node->enem ||
+			node->grid->mdhold[l][i] == node->enem - 32)
+				ft_putstr_fd("\x1B[36m⬛\x1B[0m", 2);
+			else if (node->grid->mdhold[l][i] == '.')
+				ft_putstr_fd("⬜", 2);
+			i++;
+		}
+		ft_putchar_fd('\n', 2);
+		l++;
+	}
+	usleep(55000);
 	ft_putchar_fd('\n', 2);
 }

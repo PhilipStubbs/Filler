@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/03 09:24:16 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/31 10:07:03 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/31 15:21:53 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,6 @@ t_grid	*mallocgline(void)
 	return (ret);
 }
 
-void	printnodenbr(t_phill *node)
-{
-	int i;
-	int	l;
-
-	i = 0;
-	l = 0;
-	while (l < node->grid->sizey)
-	{
-		i = 0;
-		while (i < node->grid->sizex)
-		{
-			ft_putnbr_fd(node->heatmap[l][i], 2);
-			i++;
-		}
-		ft_putchar_fd('\n', 2);
-		l++;
-	}
-}
-
 void	printtokenhold(t_phill *node)
 {
 	int i;
@@ -60,19 +40,36 @@ void	printtokenhold(t_phill *node)
 
 	i = 0;
 	l = 0;
-	ft_putchar_fd('[', 2);
 	while (l < node->token->sizey)
 	{
 		i = 0;
 		while (i < node->token->sizex)
 		{
-			ft_putchar_fd(node->token->mdhold[l][i], 2);
+			if (node->token->mdhold[l][i] == '*')
+				ft_putstr_fd("\x1B[34m⬛\x1B[0m", 2);
+			else
+				ft_putstr_fd("⬜", 2);
 			i++;
 		}
 		ft_putchar_fd('\n', 2);
 		l++;
 	}
-	ft_putchar_fd(']', 2);
+	ft_putchar_fd('\n', 2);
+}
+
+void	visualiser(t_phill *node, int on)
+{
+	if (on == 1)
+		asvisualizer(node);
+	if (on == 2)
+		printtokenhold(node);
+	if (on == 3)
+		printnodenbr(node);
+	if (on == 4)
+	{
+		asvisualizer(node);
+		printtokenhold(node);
+	}
 }
 
 int		main(void)
@@ -97,8 +94,7 @@ int		main(void)
 			endwin();
 			return (0);
 		}
-		asvisualizer(node);
-		// curvisualizer(node);
+		visualiser(node, 4);
 		getinfo(node, fd);
 	}
 	return (0);

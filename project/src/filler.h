@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 12:07:02 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/31 09:49:50 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/31 15:14:40 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ int					linetoenem(t_phill *node);
 int					swallow(t_phill *node);
 int					skipline(int fd);
 
-void				curvisualizer(t_phill *node);
 void				asvisualizer(t_phill *node);
+void				printnodenbr(t_phill *node);
 #endif
