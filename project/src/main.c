@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/03 09:24:16 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/31 09:51:32 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/31 10:07:03 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int		main(void)
 		tokenplacement(node);
 		if (node->playable == 0)
 		{
+			endwin();
 			return (0);
 		}
 		asvisualizer(node);
