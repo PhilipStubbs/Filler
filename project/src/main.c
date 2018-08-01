@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/03 09:24:16 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/31 15:21:53 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/01 07:59:40 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	printtokenhold(t_phill *node)
 		while (i < node->token->sizex)
 		{
 			if (node->token->mdhold[l][i] == '*')
-				ft_putstr_fd("\x1B[34m⬛\x1B[0m", 2);
+				ft_putstr_fd("\x1B[34m██\x1B[0m", 2);
 			else
 				ft_putstr_fd("⬜", 2);
 			i++;
@@ -91,7 +91,6 @@ int		main(void)
 		tokenplacement(node);
 		if (node->playable == 0)
 		{
-			endwin();
 			return (0);
 		}
 		visualiser(node, 4);
